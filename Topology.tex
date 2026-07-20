@@ -1,0 +1,728 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb}
+\title{Topology}
+\author{Maxwel Kim}
+\date{June 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{Euclidian set}
+
+\textbf{Archemedis Theorem} states that 
+
+\[
+1. \forall x>0, y\in \mathbb{R}, \exists n \; \text{such that} \; nx>y
+\]
+
+\[
+2. \forall x>0, \exists n \; \text{such that} 0<\frac{1}{n}<x
+\]
+
+\[
+3. \forall n\in \mathbb{N} \; \exists x=0 \; \text{such that} \; 0\leq x<\frac{1}{n} 
+\]
+
+by proof by contradiction, let's say
+
+\[
+nx\leq y
+\]
+
+so that by supreme theorem
+
+\[
+\exists \; \alpha =\sup A(\in \mathbb{R})
+\]
+
+but since $x>0$, there exists $m\in \mathbb{N}$ such that $\alpha-x<\alpha$ satisfies. therefore since $\alpha-x$ is not a supreme, it comes to $\alpha-x<mx$ so that $m$ exists, but rearranging, $\alpha<(m+1)x\in A$ makes it that $\alpha$ is not a supreme of $A$ therefore it works out.
+
+\textbf{Open set} is said when 
+
+\[
+\forall x\in U, \exists x\in B(x,r)\subset U
+\]
+
+so that $r$ exists. and $B(x,r)$ is an open ball of $\mathbb{R}^n$ 
+
+On the other hand, it is called \textbf{closed set} if 
+
+\[
+C^c=\mathbb{R}^n-C
+\]
+
+applies so that $C^c$ is an open set that makes $C$ a closed set
+
+here is an example, statement "every finite subset is closed set in $\mathbb{R}^n$ is true because
+
+\[
+\forall A=\{a_1,....,a_k\}\subset \mathbb{R}^n
+\]
+
+then we have to prove that 
+
+\[
+A^c=\mathbb{R}^n-A
+\]
+
+is an open set, so we pick a point $p\in A^c$ and now can state
+
+\[
+r := \min\{d(p,a_i)|i\in \{1,2,...,k\}\}
+\]
+
+then since $B(p,r)\cup A=\varnothing$ we can then claim that $p\in B(p,r)\subset A^c$ so $A^c$ is open set of $\mathbb{R}^n$ A is closed set of $\mathbb{R}^n$
+
+now comes definition of continuity.
+
+\textbf{Definition:} continuous at point $p$ occurs when for function
+
+\[
+f:\mathbb{R}^m \rightarrow \mathbb{R}^n
+\]
+
+we can claim 
+
+\[
+\forall \epsilon>0, \;d(x,p)<\delta \rightarrow d(f(x),f(p))<\epsilon, \exists \delta>0
+\]
+
+\textbf{Topology} is when
+
+\[
+\varnothing, X\in \mathcal{T} \; \forall X \text{ being set}
+\]
+\[
+\forall U_\alpha\in\mathcal{T}(\alpha\in \Lambda), \; \bigcup_{\alpha\in \Lambda}U_\alpha \in \mathcal{T}
+\]
+\[
+\forall \text{finite } U_\alpha \in \mathcal{T},(\alpha\in\{1,2,...,m\}), \bigcap_{\alpha=1}^{m} U_\alpha\in \mathcal{T}
+\]
+
+all applies
+
+and of course, when there is toplogy space $(X,\mathcal{T})$, and $U\in \mathcal{T}$, it applies that $U$ is \textbf{$\mathcal{T}-$open set}
+
+\textbf{for example,} say we have a set of 
+
+\[
+\mathcal{T}_1=\{\varnothing, X, \{a,b\}, \{b,c\}\}
+\]
+
+this is not a topological space because intersection of $\{a,b\}, \{b,c\}$ is $\{b\}$ and doesn't exist in the set, so it would be topological space if we add $\{b\}$ in there.
+
+\textbf{Subspace} is when
+
+\[
+\mathcal{T}_A=\{A\cap U| U\in \mathcal{T}\} \forall A\subset X
+\]
+
+and we call $(A,\mathcal{T}_A)$ is subspace of $(X,\mathcal{T})$
+
+\textbf{Neighborhood} is defined as 
+
+\[
+\forall x\in U, U\in \mathcal{T}, \; x\in U \subset N 
+\]
+
+validates, then it's called $N$ is neighborhood of $x$.
+
+now definition for closure,
+
+\textbf{closure} is when defined as
+
+\[
+\bar{A} = \cap \{C|C \; \text{is a closure of } A\subset C\}
+\]
+
+and here follows the theorem:
+
+\[
+A\subset \bar{A} \subset C
+\]
+
+if $C$ includes $A$ as closed set. Also to be able to be closed set, it has to be
+
+\[
+A=\bar{A}
+\]
+
+for an obvious reason from definition of closure.
+
+another self-explanatory expression is this:
+
+\[
+\bar{A}=A\cup A'
+\]
+
+if A is an closed set, then boundary of $A$ will be included in $A$ which makes sense as closure, if it's open set, then $A'$(boundary) will be the missing piece from open to closed set.
+
+\section*{Basis}
+
+Basis occurs when
+
+\[
+\forall (X,\mathcal{T}), \mathcal{B}\subset \mathcal{T} 
+\]
+
+and to be able to be a basis, it has to have these requirements:
+
+\[
+X=\bigcup_{\lambda\in\Lambda}B_\lambda, where \; \; B_\lambda\in\mathcal{B}
+\]
+\[
+\forall B_1, B_2\in \mathcal{B}, B_1\cap B_2 \in \mathcal{B}
+\]
+
+\textbf{Sub-basis} is defined as
+
+\[
+\forall S=\{S_\alpha|S_\alpha\subset X, \alpha\in \Lambda\}, \bigcup S_\alpha=X
+\]
+
+happens to be true
+
+for $X=(X,\mathcal{T}_1), Y=(Y,\mathcal{T}_2)$ \textbf{Continuity} is defined as function $f:X\rightarrow Y$ being
+
+\[
+\forall f(x)\in V \text{ where } x \text{ is in X}, V\in \mathcal{T}_2
+\]
+
+\[
+f(U)\subset V, \exists U
+\]
+
+therefore as defined as 
+
+\[
+f:X\rightarrow Y, \forall V\in \mathcal{T}_2 f^{-1}(V)\in \mathcal{T}_1
+\]
+
+given $X=\{x,y,z\}, \mathcal{T}_1=\{X,\varnothing,\{x,y\},\{z\}\}, Y=\{a,b\}, \text{and } \mathcal{T}_2=\{Y,\varnothing, \{b\}\}$
+
+we define function $f$ as this:
+
+\[
+f:X\rightarrow Y \; \textbf{ s.t.} \; f(x)=b, f(y)=a, f(z)=b
+\]
+
+and this is clearly not a continuous map because 
+
+\[
+f^{-1}(\{b\})=\{x,z\}\notin \mathcal{T}_1
+\]
+
+this leads to the fact that
+
+\textbf{Theorem} $f$ being continuous throughout all point at domain $X$ will mean same as being continuous map
+
+\textbf{Definition:} Homeomorphism is topology space's function that appears to apply these:
+
+\[
+f \; \text{ bijective}
+\]
+\[
+f \text{ continuous}
+\]
+\[
+f^{-1} \text{continuous}
+\]
+
+when these 3 applies it appears to be homeomorphic.
+
+for example, function from topology $(X,\mathcal{U}_X) , (Y,\mathcal{U}_Y)$ is given and for
+
+\[
+X=\mathbb{Z}, Y=\{\frac{1}{n}|n\in \mathbb{Z}-\{0\}\}\cup\{0\}
+\]
+
+this shows that it is not homeomorphic. this is because if we say $\{0\}\in \mathcal{U}_Y$ then there has to be $\mathcal{U}$ that includes $U\cap Y=\{0\}$. therefore, there exists $0\in (a,b)$ such that both $(a,b)\subset U$ and $Y\cap (a,b)\subset Y\cap U=\{0\}$. but $0\in (a,b)$ doesnt exist because $Y\cap (a,b)$ is an infinite set. therefore this is not homeomorphism
+
+\textbf{theorem}
+
+\[
+f \text{ is homeomorphism}
+\]
+\[
+f \text{ is continuous and open map}
+\]
+\[
+f \text{ is continuous and closed map}
+\]
+\[
+\forall A\subset X, \; \bar{f(A)}=f(\bar{A})
+\]
+
+these 4 are all equivalent statement.
+
+
+\textbf{Distance function}
+
+\textbf{metric function } is defined as function $d:X \times X \rightarrow \mathbb{R}$ when
+
+\[
+d(x,y)\geq 0
+\]
+\[
+d(x,y)=0 \longleftrightarrow x=y
+\]
+\[
+d(x,y)=d(y,x)
+\]
+\[
+d(x,z)\leq d(x,y)+d(y,z)
+\]
+
+and here is definition for open ball:
+
+\[
+B_d(p,r)=\{x\in X| d(p,x)<r\}
+\]
+
+and for to be able to define continuity,
+
+\[
+f(B_d(x,\delta))\subset B_\rho(f(x),\epsilon)
+\]
+
+\section*{Spaces}
+
+it's called sequence if 
+
+\[
+f:\mathbb{N} \rightarrow X, f(n)=x_n \in X
+\]
+
+\[
+(x_n)_{n\in \mathbb{N}}:=<x_n>
+\]
+
+
+\textbf{ theorem:} if $f:X\rightarrow Y$ is continuous, it is sequentially continuous
+
+this is because if we let $<x_n>$ as one sequence in $X$, and $\forall p\in X$ we say $<x_n>\rightarrow p$ then  we need to prove $<f(x_n)> \rightarrow f(p)$ to prove that it's continuous. since $f$ is continuous, $f(p)\in Y$ occurs and $f(U)\subset V$ also occurs so that $p$ exists in $U$ therefore $f(x_n)\in f(U)\subset V$ this leads to $<f(x_n)> \rightarrow f(p)$, therefore it is sequentially continuous.
+
+it is called \textbf{ first countable space} if for all $x$ where its countable local base at $x$ exists in $X$.
+
+example: 
+
+if $X$ is incountable set, then cofinite space $(X,\mathcal{T}_f)$ is NOT first countable space.
+
+this is because if we set $(x,\mathcal{T}_f)$ as first countable space, then this leads to the fact that
+
+\[
+\forall p\in X, \mathcal{B}_p=\{B_n|n\in \mathbb{N}\} 
+\]
+
+exists. Then for every $n\in \mathbb{N}$, we can say $p\in B_n\neq \varnothing$ and since $B_n\in \mathcal{T}_f$, $B_n^c$ is therefore finite set, then
+
+\[
+(\bigcap_{n\in \mathbb{N}}B_n)^{c}=\bigcup_{n\in\mathbb{N}}B_n^c
+\]
+
+is countable set. and since $X$ is not countable, the big cup is also not countable. so there exists point where
+
+\[
+p\neq q, q\in \bigcap_{n\in \mathbb{N}}B_n
+\]
+
+so this is not valid.
+
+\textbf{theorem:}
+
+first countable space has hereditary property\\
+first countable space has countable productive property\\
+
+we need to prove that its subspace also is first countable space to be hereditary.
+
+\[
+(A,\mathcal{T}_A)\subset (X,\mathcal{T})
+\]
+\[
+\forall a\in A\subset X, \{B_n\cap A|n\in \mathbb{N}\}\in \mathcal{T}_A
+\]
+
+and furthermore
+
+\[
+a\in B_n\cap A
+\]
+
+so it is proven to be hereditary
+
+for countable finite product property:
+
+\[
+\forall x=(x_1,...,x_n)\in \prod_{\alpha\in \Lambda}X_\alpha 
+\]
+
+then 
+
+\[
+\mathcal{B}=\{B_1\times B_2 \times ... \times B_n|B_\alpha \in \mathcal{B}_{x_\alpha}, \alpha\in \Lambda\}
+\]
+
+and this point $x\in\prod X_\alpha$ is countable, therefore is first countable space
+
+for infinite countable product property it's different:
+
+\[
+\forall x=(x_\alpha)_{\alpha \in \mathbb{N}}\in \prod_{\alpha\in \mathbb{N}}X_\alpha 
+\]
+
+then since it's countable for every $\alpha$, $\exists \mathcal{B}_{x_\alpha}$ countable local basis where $B_\alpha=X_\alpha$ except finite $\alpha$ therefore it is first countable space
+
+\textbf{theorem:} if first countable space $X$, $f:X\rightarrow Y$ is sequentially continuous, then it is continuous.
+
+\textbf{definition: } second countable space is defined when for $(X,\mathcal{T})$ exists countable basis. 
+\\
+
+
+second countable space is first countable space because by definition, first countable space is countable local basis whereas second countable space consists of countable base.
+
+for similar reason, second countable space has hereditary property and countable product property. 
+
+here's the different between those two space:
+\\
+
+
+second countable space has topological property:
+
+\[
+f:(X,\mathcal{T}_1)\rightarrow (Y,\mathcal{T}_2)
+\]
+
+say this function is homeomorphism, and domain is second countable space, then
+
+\[
+\exists \mathcal{B}=\{B_\alpha|\alpha\in \mathbb{N}\}
+\]
+
+where
+
+\[
+\{f(B_\alpha)|\alpha\in\mathbb{N}\}
+\]
+
+is range's countable basis.
+
+\section*{Separation Axiom}
+
+$T_0$ space also known as Kolmogorov space is defined as 
+
+\[
+\forall a,b\in X, \exists \; U\in \mathcal{T} \text{ s.t. } U(\ni a), U(\not\ni b) \; \text{ or } U(\not\ni a) , U(\ni b)
+\]
+
+this is a theorem of definition-based
+
+\[
+1. X \text{ is } T_0 \text{ space}
+\]
+\[
+2. \forall a,b\in X \text{ applies that } a \notin \bar{\{b\}} \text{ or } b \notin \bar{\{a\}}
+\]
+
+now what this means is that 
+
+\[
+\forall a,b\in X, 
+\]
+
+as definition of $T_0$ space, 
+
+\[
+\exists U \; \text{such that } a\in U, b\notin U \text{ or } a\notin U, b\in U. 
+\]
+
+so for the first case,
+
+\[
+b\in U^c(\text{closed set)}, \bar{\{b\}}\subset U^c. \rightarrow a\notin \bar{\{b\}}
+\]
+
+second case works the same.
+
+and vice versa from $2\rightarrow 1$ works the same other way around.\\
+
+easy to prove this space has product property, hereditary property and topological property.\\
+
+$T_1 $ Space is defined as 
+
+\[
+\forall U,V(\text{opened set}) \text{ such that } a\in U, b\in V \text{ & } a\notin V, b\notin U
+\]
+
+also has product property, hereditary property and topological property.\\
+
+\textbf{theorem:} there two statements are equivalent
+
+\[
+1. \text{ topology } X \text{ is } T_1 \text{ space}
+\]
+\[
+2. \forall a\in X, \{a\}= \text{closed set}
+\]
+
+this is because 
+
+\[
+\forall a\in V^c, \{a\}\subset V^c \text{ if we keep the definition.} 
+\]
+\[
+b\in V\subset \{a\}^c
+\]
+
+therefore open set is $\{a\}^c$ and $\{b\}^c$ and $U=\{b\}^c$ and $V=\{a\}^c$ therefore $X $ is $T_1$ space.
+
+$T_1$ space also has product property, hereditary property and topological property
+
+for proving this, let's say we have subspace $(A,\mathcal{T}_A)$ that's $T_1$ space. then for $a,b\in A$, they are in $a,b \in X$ since they are subspace of $X$, and since $X$ is $T_1$ space all the definition stuff works on $a,b$. 
+
+\[
+a\in U_A, b\in V_A, a\notin V_A, b\notin U_A
+\]
+
+therefore it is $T_1$.
+
+for topological property, let's say $(X,\mathcal{T}_1)$ and $(Y,\mathcal{T}_2)$ are homeomorphism and $(x,\mathcal{T}_1)$ $T_1$ space.
+
+then there exists homeomorphic function $h:(X,\mathcal{T}_1)\rightarrow (Y,\mathcal{T}_2)$ now we have to prove topology $Y$ to be $T_1$ space.
+
+To do this, we have $y_1,y_2\in Y$ such that since it's homeomorphism 
+
+\[
+h^{-1}(y_1)=x_1, h^{-1}(y_2)=x_2
+\]
+
+and since $X$ space is homeomorphic, we can say
+
+\[
+x_1\in U_1\in \mathcal{T}_1, \; x_2\in U_2 \in \mathcal{T}_2
+\]
+
+setting up $Y$ space as $V$, it happens the same where
+
+\[
+y_1\in V_1, y_2\in V_2
+\]
+
+therefore topological space works.
+
+
+\textbf{Hausdorff space} or $T_2$ space is defined as 
+
+\[
+\forall a\in U, b\in V \; \exists U\cap V=\varnothing
+\]
+
+to prove $T_2$ space being hereditary, 
+
+\[
+\forall (A,\mathcal{T}_A)\subset (X,\mathcal{T})
+\]
+
+then
+
+\[
+\forall a,b\in A, a,b\in X \rightarrow a\in U\in \mathcal{T}, b\in V\in \mathcal{T}
+\]
+
+such that
+
+\[
+U\cap V=\varnothing
+\]
+
+therefore
+
+\[
+a\in A\cap U:=U_A\in \mathcal{T}_A, b\in A\cap V:= V_A\in \mathcal{T}_A
+\]
+
+therefore it is hausdorff space.
+
+to prove it's topologically proven, we set 2 different homeomorphic topology and set the domain as $T_2$, like previous proof.
+
+\[
+(X,\mathcal{T}_1)(T_2)\rightarrow (Y,\mathcal{T}_2).
+\]
+
+then as always, we have to prove range is $T_2$. and to do that
+
+\[
+\forall y_1,y_2\in Y \text{ such that } h^{-1}(y_1,y_2)=(x_1,x_2)
+\]
+
+this shows that there is open space $U$, that
+
+\[
+x_1\in U_1\in \mathcal{T}_1, x_2\in U_2\in \mathcal{T}_1, U_1 \cap U_2=\varnothing
+\]
+
+and the fact that it is homeomorphic, where bijective property now brings in
+
+\[
+h(U_1)=V_1, h(U_2)=V_2
+\]
+
+then
+
+\[
+\forall V_1, V_2\in \mathcal{T}_2, y_1\in V_1, y_2\in V_2
+\]
+
+therefore, it is $T_2$ space. 
+
+to prove its product property, 
+
+\[
+\forall x,y \;, \; x_{\alpha_0} \in U_{\alpha_0}, y_{\alpha_0} \in V_{\alpha_0}. U_{\alpha_0}\cap V_{\alpha_0}=\varnothing
+\]
+
+there exists openset $U,V$ that applies this and product space also exist where:
+
+\[
+P^{-1}_{\alpha_0}(U_{\alpha_0})=U, P^{-1}_{\alpha_0}(V_{\alpha_0})=V
+\]
+
+where
+
+\[
+P_{\alpha_0}: \prod_{\alpha\in \Lambda} X_\alpha \rightarrow X_{\alpha_0}
+\]
+
+exists. Therefore it is product property.
+
+\textbf{regular space} is defined as
+
+\[
+F\subset U, x\in V \text{ & } U\cap V = \varnothing
+\]
+
+this is also called $T_3$ space.
+
+it is easy to prove that $T_3$ space is $T_2$ space because
+
+\[
+\{p\}\subset U, q\in V, U\cap V=\varnothing
+\]
+
+where $\{p\}$ is treated as space.and it works to prove it's $T_2$ space therefore.
+
+for same proof, it can be proven that they have heredarity, topological, and product property.
+
+\textbf{Normal space} is defined when
+
+\[
+F_1\subset U, F_2\subset V, U\cap V=\varnothing
+\]
+
+\textbf{theorem:} it can be easily proven in the same way that $T_4$ is $T_3$. 
+
+\[
+F\subset U, \{x\}\subset V, U\cap V=\varnothing
+\]
+
+
+\section*{Compact Space}
+
+\textbf{covering } is defined as 
+
+\[
+A\subset \bigcup_{U\in \mathcal{C}}U
+\]
+
+$\mathcal{C}_0$ is called subcovering when $\mathcal{C}_0\subset \mathcal{C}$ where $\mathcal{C}$ is covering
+
+now that we know covering, \textbf{compact set} is when $(X,\mathcal{T})$ being topological space and $A\subset X$. where 
+
+\[
+\mathcal{C}=\{U_\lambda|\lambda\in \Lambda, U_\lambda\in \mathcal{T}\} 
+\]
+
+includes finite subcovering 
+
+\[
+\mathcal{C}_0=\{U_{\lambda_1},...,U_{\lambda_n}\}.
+\]\\
+
+
+\textbf{Heine Borel theorem}
+\begin{theorem}
+In the usual topological space $(\mathbb{R}, u)$, the bounded closed set $[a,b]$ is compact.
+\end{theorem}
+
+\begin{proof}
+Let $\mathcal{C} = \{U_\alpha \mid \alpha \in \Lambda\}$ be an arbitrary open cover of $[a,b]$. Define
+\[
+A = \{x \in [a,b] \mid [a,x] \text{ is covered by a finite subcover of } \mathcal{C}\}.
+\]
+Then $A \subset [a,b]$ and $a \in A$, so $A \neq \emptyset$; also $A$ is bounded above by $b$. Hence
+\[
+\sup A = c
+\]
+exists for some $c \in [a,b]$.
+
+Suppose $c < b$. Since $c \in U_\alpha$ for some $U_\alpha \in \mathcal{C}$, there exists $\varepsilon > 0$ such that
+\[
+(c-\varepsilon, c+\varepsilon) \subset U_\alpha, \qquad c+\varepsilon < b. 
+\]
+By definition of $c$, there exist $U_{\alpha_1}, \dots, U_{\alpha_n} \in \mathcal{C}$ such that
+\[
+\left[a, c - \tfrac{\varepsilon}{2}\right] \subset \bigcup_{i=1}^n U_{\alpha_i},
+\]
+
+\[
+\left[a, c + \tfrac{\varepsilon}{2}\right] \subset \left(\bigcup_{i=1}^n U_{\alpha_i}\right) \cup U_\alpha.
+\]
+Thus $c + \tfrac{\varepsilon}{2} \in A$, contradicting $c = \sup A$. Therefore $c = b$, i.e.,
+\[
+[a,b] \subset U_{\alpha_1} \cup \cdots \cup U_{\alpha_n} \cup U_\alpha.
+\]
+So $\mathcal{C}_0 = \{U_{\alpha_1}, \dots, U_{\alpha_n}, U_\alpha\} \subset \mathcal{C}$ is a finite subcover of $[a,b]$, hence $[a,b]$ is compact.
+\end{proof}
+
+as this theorem, we can easily prove
+
+\textbf{theorem:} if $F$ is closed set, then $F$ is compact set in compact space $(X,\mathcal{T})$
+
+\begin{proposition}
+A closed subset $F$ of a compact space $(X, \mathcal{T})$ is compact.
+\end{proposition}
+
+\begin{proof}
+Let $C = \{U_\alpha \mid \alpha \in \Lambda, U_\alpha \in \mathcal{T}\}$ be an arbitrary open cover of $F$. Since $F \subset \bigcup_{\alpha \in \Lambda} U_\alpha$,
+\[
+C_X = C \cup \{F^c\} = \{U_\alpha, F^c \mid U_\alpha \in \mathcal{T}, \alpha \in \Lambda\}
+\]
+is an open cover of $X$ in $(X, \mathcal{T})$. Since $X$ is compact, there exists a finite subcover $C_X' \, (\subset C_X)$ of $X$, of the form
+\[
+\{U_{\alpha_i} \in C_X \mid i \in \{1, \dots, k\}\} \quad \text{or} \quad \{U_{\alpha_i} \in C_X \mid i \in \{1, \dots, k\}\} \cup \{F^c\}.
+\]
+Thus
+\[
+X \subset \bigcup_{i=1}^k U_{\alpha_i} \quad \text{or} \quad X \subset \left(\bigcup_{i=1}^k U_{\alpha_i}\right) \cup F^c.
+\]
+Since $F \cap F^c = \emptyset$, in either case $C_X'$ (excluding $F^c$ if present) is a finite subcover of $F$. Hence $F$ is compact in $(X, \mathcal{T})$.
+\end{proof}
+
+\textbf{limit point compact} is when topology $(X,\mathcal{T})$ has limit point on $X$
+
+and this follows by compact space is limit point compact space. 
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
