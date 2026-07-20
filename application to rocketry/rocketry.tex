@@ -1,0 +1,1495 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\title{Rocketry equation}
+\author{주안 김}
+\date{July 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{rocketry equation}
+
+
+\[
+\textbf{Nominal Operating Point}
+\]
+
+Let
+
+\[
+\mathbf{x}_0=(W_0,V_0,\Delta T_0)
+\]
+
+denote the nominal launch conditions, and let
+
+\[
+\varepsilon\in\mathbb{R},
+\qquad
+|\varepsilon|\ll1
+\]
+
+represent a small perturbation from the nominal state.
+
+Assume
+
+\[
+W(\varepsilon)
+=
+W_0
+\left(
+1+\sum_{n=1}^{\infty}\alpha_n\varepsilon^n
+\right),
+\]
+
+\[
+V(\varepsilon)
+=
+V_0
++
+\sum_{n=1}^{\infty}\beta_n\varepsilon^n,
+\]
+
+\[
+\Delta T(\varepsilon)
+=
+\Delta T_0
++
+\sum_{n=1}^{\infty}\gamma_n\varepsilon^n.
+\]
+
+The apogee model is
+
+\[
+H(W,V,\Delta T)
+=
+A
++
+B(\Delta T)
++
+C\ln(W)
++
+D\cos(V).
+\]
+
+Substituting the perturbation expansions,
+
+\[
+\begin{aligned}
+H(\varepsilon)
+=
+&
+A
++
+B
+\left(
+\Delta T_0
++
+\sum_{n=1}^{\infty}
+\gamma_n\varepsilon^n
+\right)
+\\
+&
++
+C
+\ln
+\left[
+W_0
+\left(
+1+\sum_{n=1}^{\infty}
+\alpha_n\varepsilon^n
+\right)
+\right]
+\\
+&
++
+D
+\cos
+\left(
+V_0
++
+\sum_{n=1}^{\infty}
+\beta_n\varepsilon^n
+\right).
+\end{aligned}
+\]
+
+Using
+
+\[
+\ln(ab)=\ln(a)+\ln(b),
+\]
+
+gives
+
+\[
+\ln(W)
+=
+\ln(W_0)
++
+\ln
+\left(
+1+\sum_{n=1}^{\infty}
+\alpha_n\varepsilon^n
+\right).
+\]
+
+Applying the Taylor series
+
+\[
+\ln(1+x)
+=
+\sum_{k=1}^{\infty}
+(-1)^{k+1}
+\frac{x^k}{k},
+\qquad
+|x|<1,
+\]
+
+where
+
+\[
+x
+=
+\sum_{n=1}^{\infty}
+\alpha_n\varepsilon^n,
+\]
+
+yields
+
+\[
+\ln(W)
+=
+\ln(W_0)
++
+\sum_{k=1}^{\infty}
+(-1)^{k+1}
+\frac{1}{k}
+\left(
+\sum_{n=1}^{\infty}
+\alpha_n\varepsilon^n
+\right)^k.
+\]
+
+Similarly, expanding about the nominal wind speed \(V_0\),
+
+\[
+\begin{aligned}
+\cos(V)
+=
+&
+\cos(V_0)
+-
+\sin(V_0)
+\left(
+\sum_{n=1}^{\infty}
+\beta_n\varepsilon^n
+\right)
+\\
+&
+-
+\frac{\cos(V_0)}{2!}
+\left(
+\sum_{n=1}^{\infty}
+\beta_n\varepsilon^n
+\right)^2
+\\
+&
++
+\frac{\sin(V_0)}{3!}
+\left(
+\sum_{n=1}^{\infty}
+\beta_n\varepsilon^n
+\right)^3
++\cdots.
+\end{aligned}
+\]
+
+Hence,
+
+\[
+\begin{aligned}
+H(\varepsilon)
+=
+&
+A
++
+B\Delta T_0
++
+C\ln(W_0)
++
+D\cos(V_0)
+\\
+&
++
+\sum_{n=1}^{\infty}
+K_n
+\varepsilon^n,
+\end{aligned}
+\]
+
+where
+
+\[
+K_n
+=
+B\gamma_n
++
+CL_n
++
+DM_n,
+\]
+
+with
+
+\[
+L_n
+\]
+
+the coefficient of
+\(\varepsilon^n\)
+from the logarithmic expansion, and
+
+\[
+M_n
+\]
+
+the coefficient of
+\(\varepsilon^n\)
+from the cosine expansion.
+
+Finally,
+
+\[
+\boxed{
+H(\varepsilon)
+=
+K_0
++
+\sum_{n=1}^{\infty}
+K_n
+\varepsilon^n
+}
+\]
+
+where
+
+\[
+K_0
+=
+A
++
+B\Delta T_0
++
+C\ln(W_0)
++
+D\cos(V_0).
+\]
+
+\[
+\textbf{Local Sensitivity with Respect to Weight}
+\]
+
+The apogee model is
+
+\[
+H(W,V,\Delta T)
+=
+A
++
+B(\Delta T)
++
+C\ln(W)
++
+D\cos(V).
+\]
+
+The first partial derivative with respect to weight is
+
+\[
+\frac{\partial H}{\partial W}
+=
+\frac{C}{W}.
+\]
+
+Hence, the local sensitivity of the apogee to weight is inversely
+proportional to the rocket weight. In particular,
+
+\[
+\lim_{W\to0^+}
+\frac{\partial H}{\partial W}
+=\infty,
+\]
+
+indicating that small variations in lighter rockets produce
+significantly larger changes in the predicted apogee.
+
+\vspace{0.5cm}
+
+\[
+\textbf{Local Curvature}
+\]
+
+Differentiating a second time,
+
+\[
+\frac{\partial^2H}{\partial W^2}
+=
+-\frac{C}{W^2}.
+\]
+
+Since
+
+\[
+\frac{\partial^2H}{\partial W^2}<0
+\qquad (C>0),
+\]
+
+the logarithmic contribution is locally concave, implying diminishing
+returns as the rocket weight increases.
+
+Furthermore,
+
+\[
+\left|
+\frac{\partial^2H}{\partial W^2}
+\right|
+=
+\frac{|C|}{W^2},
+\]
+
+which decreases quadratically with increasing weight. Thus, the model
+is most strongly curved in the low-weight regime and gradually becomes
+locally linear as \(W\) increases.
+
+\vspace{0.5cm}
+
+Consequently, the first-order Taylor approximation is expected to be
+most accurate for heavier rockets, while higher-order terms become
+increasingly important for lighter rockets due to the larger local
+curvature.
+
+\[
+\textbf{Launch Manifold}
+\]
+
+\[
+M=\{(W,V,\Delta T)\}, \qquad
+H:M\rightarrow\mathbb{R},
+\]
+
+\[
+H(W,V,\Delta T)
+=
+A+B\Delta T+C\ln(W)+D\cos(V).
+\]
+
+\[
+\textbf{Coordinate Map}
+\]
+
+\[
+u=\ln(W),
+\qquad
+du=\frac{dW}{W}.
+\]
+
+Hence
+
+\[
+H(u,V,\Delta T)
+=
+A+B\Delta T+Cu+D\cos(V).
+\]
+
+\[
+\textbf{Metric}
+\]
+
+\[
+g
+=
+\frac{dW^2}{W^2}
++
+\frac{dV^2}{V_0^2}
++
+\frac{d(\Delta T)^2}{T_0^2}.
+\]
+
+Equivalently,
+
+\[
+g
+=
+du^2
++
+\frac{dV^2}{V_0^2}
++
+\frac{d(\Delta T)^2}{T_0^2}.
+\]
+
+\[
+\textbf{Christoffel Symbol}
+\]
+
+\[
+g_{WW}
+=
+\frac1{W^2},
+\]
+
+\[
+\Gamma^W_{WW}
+=
+\frac12g^{WW}
+\left(
+2\partial_Wg_{WW}
+-
+\partial_Wg_{WW}
+\right)
+=
+-\frac1W.
+\]
+
+\[
+\textbf{Geodesic Equation}
+\]
+
+\[
+\frac{d^2x^k}{ds^2}
++
+\Gamma^k_{ij}
+\frac{dx^i}{ds}
+\frac{dx^j}{ds}
+=
+0.
+\]
+
+For the weight coordinate,
+
+\[
+\frac{d^2W}{ds^2}
+-
+\frac1W
+\left(
+\frac{dW}{ds}
+\right)^2
+=
+0.
+\]
+
+\[
+\textbf{Covariant Hessian}
+\]
+
+\[
+\nabla_i\nabla_jH
+=
+\partial_i\partial_jH
+-
+\Gamma^k_{ij}\partial_kH.
+\]
+
+\[
+\frac{\partial H}{\partial W}
+=
+\frac{C}{W},
+\]
+
+\[
+\frac{\partial^2H}{\partial W^2}
+=
+-\frac{C}{W^2},
+\]
+
+\[
+\frac{\partial^2H}{\partial V^2}
+=
+-D\cos(V),
+\]
+
+\[
+\frac{\partial^2H}{\partial(\Delta T)^2}
+=
+0.
+\]
+
+\[
+\textbf{Covariant Expansion}
+\]
+
+\[
+H(p)
+=
+H(p_0)
++
+\nabla_iH\,\xi^i
++
+\frac12
+\nabla_i\nabla_jH
+\,\xi^i\xi^j
++
+O(\|\xi\|^3).
+\]
+
+\section*{application}
+\[
+\textbf{Apogee Sensitivity Model}
+\]
+
+\[
+H=H(W,V,\Delta T)
+\]
+
+\[
+\Delta H
+\approx
+\nabla H\cdot\Delta x
++
+\frac12
+\Delta x^T
+(\nabla^2H)
+\Delta x
+\]
+
+where
+
+\[
+\Delta x=
+\begin{bmatrix}
+\Delta W\\
+\Delta V\\
+\Delta T
+\end{bmatrix}.
+\]
+
+\[
+\textbf{Sensitivity}
+\]
+
+\[
+\nabla H
+=
+\begin{bmatrix}
+\dfrac{\partial H}{\partial W}\\[6pt]
+\dfrac{\partial H}{\partial V}\\[6pt]
+\dfrac{\partial H}{\partial \Delta T}
+\end{bmatrix}
+\]
+
+\[
+S_i=
+\left|
+\frac{\partial H}{\partial x_i}
+\right|
+\]
+
+\[
+\eta_i=
+\frac{S_i}{\sum_jS_j}
+\]
+
+\[
+\textbf{Uncertainty Propagation}
+\]
+
+\[
+\sigma_H^2
+=
+\nabla H^T
+\Sigma
+\nabla H
+\]
+
+where
+
+\[
+\Sigma=
+\begin{bmatrix}
+\sigma_W^2&0&0\\
+0&\sigma_V^2&0\\
+0&0&\sigma_T^2
+\end{bmatrix}.
+\]
+
+\[
+\textbf{Optimization}
+\]
+
+\[
+\max H(W,V,\Delta T)
+\]
+
+\[
+\nabla H=0
+\]
+
+\[
+\nabla^2H
+\begin{cases}
+<0,&\text{maximum}\\
+>0,&\text{minimum}
+\end{cases}
+\]
+
+\[
+\textbf{Launch Condition Manifold}
+\]
+
+\[
+M=\{(W,V,\Delta T)\}
+\]
+
+\[
+H:M\rightarrow\mathbb{R}
+\]
+
+\[
+ds^2
+=
+\frac{dW^2}{W^2}
++
+\frac{dV^2}{V_0^2}
++
+\frac{d(\Delta T)^2}{T_0^2}
+\]
+
+\[
+\textbf{Geodesics}
+\]
+
+\[
+\frac{d^2x^k}{ds^2}
++
+\Gamma^k_{ij}
+\frac{dx^i}{ds}
+\frac{dx^j}{ds}
+=0
+\]
+
+\[
+\textbf{Curvature}
+\]
+
+\[
+\nabla_i\nabla_jH
+=
+\partial_i\partial_jH
+-
+\Gamma^k_{ij}\partial_kH
+\]
+
+\[
+\frac{\partial^2H}{\partial W^2}
+=
+-\frac{C}{W^2}
+\]
+
+\[
+\frac{\partial^2H}{\partial V^2}
+=
+-D\cos(V)
+\]
+
+\[
+\textbf{Performance Metric}
+\]
+
+\[
+J(W,V,\Delta T)
+=
+\frac{H(W,V,\Delta T)}{W}
+\]
+
+\[
+\max J
+\]
+
+\[
+\nabla J=0
+\]
+
+\section*{Solve}
+
+\[
+\textbf{1. Data Collection}
+\]
+
+Given experimental/simulation data:
+
+\[
+(W_i,V_i,\Delta T_i,H_i),
+\qquad i=1,2,\dots,n
+\]
+
+where
+
+\[
+H_i=A+B\Delta T_i+C\ln(W_i)+D\cos(V_i).
+\]
+
+---
+
+\[
+\textbf{2. Matrix Form}
+\]
+
+Define
+
+\[
+X=
+\begin{bmatrix}
+1&\Delta T_1&\ln(W_1)&\cos(V_1)\\
+1&\Delta T_2&\ln(W_2)&\cos(V_2)\\
+\vdots&\vdots&\vdots&\vdots\\
+1&\Delta T_n&\ln(W_n)&\cos(V_n)
+\end{bmatrix}
+\]
+
+\[
+\theta=
+\begin{bmatrix}
+A\\B\\C\\D
+\end{bmatrix}
+\]
+
+\[
+Y=
+\begin{bmatrix}
+H_1\\H_2\\\vdots\\H_n
+\end{bmatrix}.
+\]
+
+Therefore,
+
+\[
+X\theta=Y.
+\]
+
+---
+
+\[
+\textbf{3. Least Squares Solution}
+\]
+
+For
+
+\[
+n>4,
+\]
+
+solve:
+
+\[
+\boxed{
+\theta=(X^TX)^{-1}X^TY
+}
+\]
+
+giving
+
+\[
+\boxed{
+(A,B,C,D)
+}
+\]
+
+---
+
+\[
+\textbf{4. Construct Model}
+\]
+
+\[
+\boxed{
+H(W,V,\Delta T)
+=
+A+B\Delta T+C\ln(W)+D\cos(V)
+}
+\]
+
+---
+
+\[
+\textbf{5. Sensitivity}
+\]
+
+\[
+\nabla H
+=
+\begin{bmatrix}
+\dfrac{\partial H}{\partial W}\\
+\dfrac{\partial H}{\partial V}\\
+\dfrac{\partial H}{\partial \Delta T}
+\end{bmatrix}
+\]
+
+\[
+\boxed{
+\nabla H
+=
+\begin{bmatrix}
+\dfrac{C}{W}\\
+-D\sin(V)\\
+B
+\end{bmatrix}
+}
+\]
+
+---
+
+\[
+\textbf{6. Curvature}
+\]
+
+\[
+\nabla^2H
+=
+\begin{bmatrix}
+-\dfrac{C}{W^2}&0&0\\
+0&-D\cos(V)&0\\
+0&0&0
+\end{bmatrix}
+\]
+
+---
+
+\[
+\textbf{7. Taylor Approximation}
+\]
+
+Around
+
+\[
+x_0=(W_0,V_0,\Delta T_0)
+\]
+
+\[
+\boxed{
+H(x)
+\approx
+H(x_0)
++
+\nabla H(x_0)\Delta x
++
+\frac12
+\Delta x^T
+\nabla^2H(x_0)
+\Delta x
+}
+\]
+
+---
+
+\[
+\textbf{8. Optimization}
+\]
+
+Find
+
+\[
+\nabla H=0
+\]
+
+and classify using
+
+\[
+\nabla^2H.
+\]
+
+\[
+\boxed{
+\text{Optimal launch condition}
+}
+\]
+
+
+\[
+\textbf{Configuration Manifold}
+\]
+
+\[
+M=(0,\infty)\times\mathbb{R}\times\mathbb{R}
+\]
+
+\[
+H:M\rightarrow\mathbb{R}
+\]
+
+\[
+H(W,V,\Delta T)
+=
+A+B\Delta T+C\ln(W)+D\cos(V)
+\]
+
+---
+
+\[
+\textbf{Level Sets}
+\]
+
+\[
+\Sigma_c
+=
+H^{-1}(c)
+=
+\left\{
+x\in M:
+H(x)=c
+\right\}
+\]
+
+\[
+\Sigma_c
+=
+\left\{
+(W,V,\Delta T):
+A+B\Delta T+C\ln(W)+D\cos(V)=c
+\right\}
+\]
+
+---
+
+\[
+\textbf{Regular Values}
+\]
+
+\[
+\nabla H\neq0
+\]
+
+\[
+\Longrightarrow
+\]
+
+\[
+\Sigma_c
+\text{ is a smooth }2\text{-manifold.}
+\]
+
+---
+
+\[
+\textbf{Critical Points}
+\]
+
+\[
+\nabla H=0
+\]
+
+\[
+\begin{cases}
+\dfrac{C}{W}=0\\[6pt]
+-D\sin(V)=0\\[6pt]
+B=0
+\end{cases}
+\]
+
+---
+
+\[
+\textbf{Hessian}
+\]
+
+\[
+\nabla^2H
+=
+\begin{pmatrix}
+-\dfrac{C}{W^2} &0&0\\
+0&-D\cos(V)&0\\
+0&0&0
+\end{pmatrix}
+\]
+
+\[
+\det(\nabla^2H)\neq0
+\]
+
+\[
+\Longrightarrow
+\]
+
+\[
+H
+\text{ is Morse (locally).}
+\]
+
+---
+
+\[
+\textbf{Sublevel Sets}
+\]
+
+\[
+M_c
+=
+\{x\in M:H(x)\le c\}
+\]
+
+\[
+M_{c_1}
+\subseteq
+M_{c_2},
+\qquad
+c_1<c_2
+\]
+
+---
+
+\[
+\textbf{Boundary}
+\]
+
+\[
+\partial M_c
+=
+\Sigma_c
+=
+H^{-1}(c)
+\]
+
+---
+
+\[
+\textbf{Betti Numbers}
+\]
+
+\[
+\beta_0
+=
+\#(\text{connected components})
+\]
+
+\[
+\beta_1
+=
+\#(\text{independent loops})
+\]
+
+\[
+\beta_2
+=
+\#(\text{enclosed voids})
+\]
+
+---
+
+\[
+\textbf{Critical Values}
+\]
+
+\[
+c^\ast
+=
+H(x^\ast),
+\qquad
+\nabla H(x^\ast)=0
+\]
+
+\[
+c=c^\ast
+\Longrightarrow
+\text{Topology Change}
+\]
+
+---
+
+\[
+\textbf{Homotopy}
+\]
+
+\[
+\Sigma_{c_1}
+\simeq
+\Sigma_{c_2},
+\qquad
+c_1,c_2
+\notin
+\{c^\ast\}
+\]
+
+---
+
+\[
+\textbf{Persistent Filtration}
+\]
+
+\[
+\varnothing
+=
+M_{c_0}
+\subseteq
+M_{c_1}
+\subseteq
+\cdots
+\subseteq
+M_{c_n}
+=
+M
+\]
+
+\[
+\beta_k(c)
+=
+\operatorname{rank}
+H_k(M_c)
+\]
+
+---
+
+\[
+\boxed{
+\begin{aligned}
+M
+&\xrightarrow{\;H\;}
+\mathbb{R}
+\\
+&
+\Downarrow
+\\
+H^{-1}(c)
+&\Longrightarrow
+\Sigma_c
+\\
+&
+\Downarrow
+\\
+\nabla H=0
+&\Longrightarrow
+c^\ast
+\\
+&
+\Downarrow
+\\
+\text{Topology Transition}
+\end{aligned}
+}
+\]
+
+
+\[
+\textbf{Time-Dependent Variables}
+\]
+
+\[
+W=W(t),
+\qquad
+V=V(t),
+\qquad
+\Delta T=\Delta T(t)
+\]
+
+\[
+H(t)
+=
+A+B\Delta T(t)+C\ln(W(t))+D\cos(V(t))
+\]
+
+---
+
+\[
+\textbf{Chain Rule}
+\]
+
+\[
+\frac{dH}{dt}
+=
+\frac{\partial H}{\partial W}\dot W
++
+\frac{\partial H}{\partial V}\dot V
++
+\frac{\partial H}{\partial(\Delta T)}\dot T
+\]
+
+\[
+\boxed{
+\frac{dH}{dt}
+=
+\frac{C}{W}\dot W
+-
+D\sin(V)\dot V
++
+B\dot T
+}
+\]
+
+---
+
+\[
+\textbf{Second Derivative}
+\]
+
+\[
+\boxed{
+\frac{d^2H}{dt^2}
+=
+-\frac{C}{W^2}\dot W^2
++
+\frac{C}{W}\ddot W
+-
+D\cos(V)\dot V^2
+-
+D\sin(V)\ddot V
++
+B\ddot T
+}
+\]
+
+---
+
+\[
+\textbf{Differential Operator}
+\]
+
+\[
+L=\frac{d}{dt}
+\]
+
+\[
+LH
+=
+\frac{C}{W}\dot W
+-
+D\sin(V)\dot V
++
+B\dot T
+\]
+
+\[
+L^2H
+=
+\frac{d^2H}{dt^2}
+\]
+
+---
+
+\[
+\textbf{Vector Field}
+\]
+
+\[
+X
+=
+\dot W\frac{\partial}{\partial W}
++
+\dot V\frac{\partial}{\partial V}
++
+\dot T\frac{\partial}{\partial(\Delta T)}
+\]
+
+\[
+\boxed{
+\mathcal L_XH
+=
+X(H)
+=
+\frac{dH}{dt}
+}
+\]
+
+---
+
+\[
+\textbf{Exponential Weight}
+\]
+
+\[
+\dot W=-kW
+\]
+
+\[
+W(t)=W_0e^{-kt}
+\]
+
+\[
+\frac{C}{W}\dot W
+=
+-kC
+\]
+
+---
+
+\[
+\textbf{Linear Temperature}
+\]
+
+\[
+\Delta T
+=
+\Delta T_0+\alpha t
+\]
+
+\[
+\dot T=\alpha
+\]
+
+\[
+B\dot T
+=
+B\alpha
+\]
+
+---
+
+\[
+\textbf{Oscillatory Wind}
+\]
+
+\[
+V
+=
+V_0+\beta\sin(\omega t)
+\]
+
+\[
+\dot V
+=
+\beta\omega\cos(\omega t)
+\]
+
+\[
+-D\sin(V)\dot V
+=
+-D\beta\omega
+\sin(V)
+\cos(\omega t)
+\]
+
+---
+
+\[
+\textbf{Fourier Extension}
+\]
+
+\[
+F(V)
+=
+a_0
++
+\sum_{n=1}^{\infty}
+\left(
+a_n\cos(nV)
++
+b_n\sin(nV)
+\right)
+\]
+
+\[
+H
+=
+A
++
+B\Delta T
++
+C\ln(W)
++
+F(V)
+\]
+
+---
+
+\[
+\textbf{Fourier Coefficients}
+\]
+
+\[
+a_n
+=
+\frac1\pi
+\int_{-\pi}^{\pi}
+F(V)\cos(nV)\,dV
+\]
+
+\[
+b_n
+=
+\frac1\pi
+\int_{-\pi}^{\pi}
+F(V)\sin(nV)\,dV
+\]
+
+---
+
+\[
+\textbf{Generalized Model}
+\]
+
+\[
+H
+=
+A
++
+B\Delta T
++
+C\ln(W)
++
+\sum_{n=1}^{\infty}
+\left(
+a_n\cos(nV)
++
+b_n\sin(nV)
+\right)
+\]
+
+---
+
+\[
+\textbf{Generalized Dynamics}
+\]
+
+\[
+\boxed{
+\frac{dH}{dt}
+=
+\frac{C}{W}\dot W
++
+B\dot T
++
+\sum_{n=1}^{\infty}
+n
+\left(
+-a_n\sin(nV)
++
+b_n\cos(nV)
+\right)
+\dot V
+}
+\]
+
+---
+
+\[
+\textbf{Asymptotic Expansion}
+\]
+
+\[
+H
+=
+H_0
++
+\varepsilon H_1
++
+\varepsilon^2H_2
++
+O(\varepsilon^3)
+\]
+
+---
+
+\[
+\boxed{
+H
+\rightarrow
+\frac{dH}{dt}
+\rightarrow
+\frac{d^2H}{dt^2}
+\rightarrow
+\mathcal L_XH
+\rightarrow
+F(V)
+\rightarrow
+\text{Fourier Dynamics}
+}
+\]
+\end{document}
