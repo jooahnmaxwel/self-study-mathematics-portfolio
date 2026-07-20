@@ -1,0 +1,364 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\title{Portfolio : math journey}
+\author{Maxwel Kim}
+\date{June 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+I am Maxwel Kim, writing this as Junior in highschool that’s interested in mathematics and desires to write down, organize my learning in deeper-level math journey. I have self-studied advanced topics in mathematics: differential equations, linear algebra, abstract algebra, complex analysis, topology, and differential geometry. I’ve learned from textbooks and lectures from mathhm.com. Textbooks(DIfferential equations by Chris McMullen, Ph.D, Differential Geometry by Loring W. Tu, 현대대수학-	박종률, 선형대수학-경문사, 복소 해석학-이춘호*최규흥, 위상수학-한상언)(I am Korean therefore learned mostly from korean textbooks) I will state important theorems/axioms/definitions that I understand well with clear statement, while also proving with full volume + explanation in my own understanding. Proceeding, I will then choose problems that’s considered hard, or made by myself that includes full understand of the theorem/axiom/definition. Most importantly, I will then connect between ideas and concepts I’ve tried to connect to (tried) prove why Big Bang theory is valid. 
+\section*{Chapter 1: Differential Equation}
+When talking about differential equations, there are two types: partial differential equations(PDE) and ordinary(ODE). I’ve learned about ODE and will talk about it 
+\\
+
+definitions:
+\begin{itemize}
+\item Linear: if differential equations can be  $a_n(x)\frac{d^ny}{dx^n}+a_{n-1}(x)\frac{d^{n-1}y}{dx^{n-1}}+\cdots+a_0(x)y=g(x)$, example: $\frac{dy}{dx}=y^2$ is non-linear, $x^2\frac{d^2y}{dx^2}+x\frac{dy}{dx}=3$ is linear
+\item order: the greatest amount of derivatives appearing in the equation
+\item separable: if it can be expressed in form of $A(x)dx=B(y)dy$ 
+\item exact: the differential form is called exact if $M(x,y)dx+N(x,y)dy=0$ is $\frac{dM}{dy}=\frac{dN}{dx}$
+for example, given $2xydx+x^2dy=0$, $\frac{d}{dy}*(2xy)=2x$ and $\frac{d}{dx}*(x^2)=2x$ 
+\end{itemize}
+\textbf{I've understood the subject "differential equations" as solution to different types of forms}
+\begin{enumerate}
+\item separable
+general form of separable ODE is $M(x,y)dx=N(x,y)dy$ and simply integral both sides to get rid of "d"s which leads to $\int{M(x,y)dx}=\int{N(x,y)dy}$ 
+\textbf{example}: (usually there are boundary given as problem to solve for specific integral to find the "c") Given $xy'=\frac{x^3}{y}$, we can move like terms together $y\frac{dy}{dx}=x^2$ leading to $ydy=x^2dx$ and take the integral $\int{ydy}=\int{x^2dx}$, $\frac{y^2}{2}=\frac{x^3}{3}+C$ where $C$ we can find by inputting $x,y$ into equation.
+\item Exact equations:
+
+\\
+exact equation has form of $M(x,y)dx+N(x,y)dy=0$ meaning it's a potential function that uses chain rule $dp=\frac{\partial{p}}{\partial{x}}dx+\frac{\partial{p}}{\partial{y}}dy$ If and only if it's conservative, meaning $\frac{\partial{M}}{\partial{y}}=\frac{\partial{N}}{\partial{x}}$, then it is exact.
+\\
+\textbf{example}: Given
+\[
+3x^5 + xy^2 = (2y - x^2y)\frac{dy}{dx},
+\]
+it is exact because, after rearranging into the form
+\[
+(3x^5 + xy^2)\,dx + (x^2y - 2y)\,dy = 0,
+\]
+we have
+\[
+M(x,y)=3x^5+xy^2,
+\qquad
+N(x,y)=x^2y-2y.
+\]
+
+Then
+\[
+\frac{\partial M}{\partial y}
+=
+\frac{\partial}{\partial y}(3x^5+xy^2)
+=
+2xy,
+\]
+and
+\[
+\frac{\partial N}{\partial x}
+=
+\frac{\partial}{\partial x}(x^2y-2y)
+=
+2xy.
+\]
+
+Since
+\[
+\frac{\partial M}{\partial y}
+=
+\frac{\partial N}{\partial x},
+\]
+the differential equation is exact.
+Since the potential function \(g(x,y)\) satisfies
+
+\[
+\frac{\partial g}{\partial x}=M(x,y),
+\]
+
+and
+
+\[
+M(x,y)=3x^5+xy^2,
+\]
+
+we integrate \(M\) with respect to \(x\), treating \(y\) as a constant:
+
+\[
+g(x,y)=\int (3x^5+xy^2)\,dx+h(y).
+\]
+
+Thus,
+
+\[
+g(x,y)=\frac{x^6}{2}+\frac{x^2y^2}{2}+h(y).
+\]
+
+Now differentiate \(g\) with respect to \(y\):
+
+\[
+\frac{\partial g}{\partial y}
+=
+\frac{\partial}{\partial y}
+\left(
+\frac{x^6}{2}
++\frac{x^2y^2}{2}
++h(y)
+\right)
+=
+0+x^2y+h'(y).
+\]
+
+Since \(\frac{\partial g}{\partial y}=N(x,y)\), and
+
+\[
+N(x,y)=x^2y-2y,
+\]
+
+we compare terms:
+
+\[
+x^2y+h'(y)=x^2y-2y,
+\]
+
+which implies
+
+\[
+h'(y)=-2y.
+\]
+
+Integrating with respect to \(y\),
+
+\[
+h(y)=-y^2.
+\]
+
+Therefore, the potential function is
+
+\[
+g(x,y)
+=
+\frac{x^6}{2}
++\frac{x^2y^2}{2}
+-y^2.
+\]
+
+\item Non-exact equations:
+
+being not exact means
+\[
+\frac{\partial M}{\partial y} \ne \frac{\partial N}{\partial x}
+\]
+and the idea here is to multiply by some factor to make them solvable.
+
+proof: Given
+
+\[
+\mu Mdx+\mu Ndy=0, 
+\]
+
+leads to 
+
+\[
+\frac{\partial}{\partial y}(\mu M) = \frac{\partial}{\partial x}(\mu N)
+\]
+
+expaning 
+
+\[
+\mu \frac{\partial M}{\partial y} + M \frac{\partial \mu}{\partial y}
+=
+\mu \frac{\partial N}{\partial x} + N \frac{\partial \mu}{\partial x}
+\]
+
+grouping the terms we get 
+
+\[
+M \frac{\partial \mu}{\partial y} - N \frac{\partial \mu}{\partial x}
+=
+\mu \left( \frac{\partial N}{\partial x} - \frac{\partial M}{\partial y} \right)
+\]
+
+now we treat $\mu$ as case by case
+
+case #1, $\mu$ is only dependent on $x$
+
+\[
+-N\frac{d\mu}{dx} = \mu\left(\frac{\partial N}{\partial x} - \frac{\partial M}{\partial y}\right)
+\]
+
+to solve for $\mu$, we separate it from right-hand side
+
+\[
+\frac{1}{\mu}\frac{d\mu}{dx} = \frac{1}{N}\left(\frac{\partial M}{\partial y} - \frac{\partial N}{\partial x}\right)
+\]
+
+now we set \[h(x) = \frac{1}{N}\left(\frac{\partial M}{\partial y} - \frac{\partial N}{\partial x}\right)\] as it helps me denote,
+
+\[
+\frac{d\mu}{\mu} = h(x)\,dx
+\]
+
+\[
+\ln|\mu| = \int h(x)\,dx \implies \mu(x) = e^{\int h(x)\,dx}
+\]
+
+now case 2 where $\mu$ is only dependent on $y$ works the same way with same results.
+
+\textbf{Example:} We are given to solve for 
+
+\[
+y^2-x^2+xyy'=0
+\]
+
+First I'd like to organize the differential equation into better way(exact)
+
+\[
+(y^2-x^2)dx+xydy=0
+\]
+
+this helps because first we can check if it's exact or not
+
+\[
+2y=\frac{\partial}{\partial y}y^2-x^2 \ne \frac{\partial}{\partial x}xy=y
+\]
+
+And secondly, it helps to find the coefficient factor 
+
+\[
+f(x)=\int \frac{1}{N}\left(\frac{\partial M}{\partial y} - \frac{\partial N}{\partial x}\right) dx =\int \frac{dx}{x}
+=\ln x\]
+
+now this gives us 
+
+\[
+\mu(x)=e^{f(x)}=e^{\ln x}=x
+\]
+
+now Since we've found the factor, we multiply it to an original form to solve for an exact equation now
+
+\[
+(xy^2-x^3)dx+x^2ydy=0
+\]
+
+now
+
+\[
+M_2=xy^2-x^3, N_2=x^2y
+\]
+
+leads us to 
+
+\[
+\frac{\partial g}{\partial x} = xy^2-x^3
+\]
+
+\[
+g=\int (xy^2-x^3)dx + h(y)
+\]
+
+calculating the integral
+
+\[
+g=\frac{x^2y^2}{2}-\frac{x^4}{4}+h(y)
+\]
+
+Once again, we take partial in respect to $y$ to find the $h(y)$
+
+\[
+\frac{\partial g}{\partial y} = \frac{\partial}{\partial y}[\frac{x^2y^2}{2}-\frac{x^4}{4}+h(y)]=x^2y-0+h'(y)=x^2y+h'(y)
+\]
+
+finally our last step is comparing two original $N_2$ with calculated value from partial derivatives
+
+\[
+x^2y+h'(y)=x^2y
+\]
+
+and this leads us to get 
+
+\[
+h'(y)=0 h(y)=C
+\]
+
+\item \textbf{wronskian}
+
+definition: determinant of n by n matrix where they are consisted by number of differentiation determined by number of the set
+
+\textbf{example: }
+
+wronskian of the set 
+
+\[
+\left\{x^2,x^3 \right\}
+\]
+
+is 
+
+\[
+\[
+W(x^2,x^3)=
+\begin{bmatrix}
+x^2 & x^3 \\
+2x & 3x^2
+\end{bmatrix}
+=(x^2)(3x^2)-(x^3)(2x)=3x^4-2x^4=x^4
+\]
+\]
+
+\textbf{Theorem:} wronskian being nonzero means the functions are independent and vice versa
+
+\textbf{Proof:}
+
+let's say we have 
+
+\[
+c_1f(x)+c_2g(x)=0
+\]
+
+and
+
+\[
+c_1f'(x)+c_2g'(x)=0
+\]
+
+putting these into matrix form gets us
+
+
+
+$$
+\begin{bmatrix} f(x) & g(x) \\ f'(x) & g'(x) \end{bmatrix} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+
+$$
+
+this explains that $c_1, c_2$ being 0 means the functions are dependent and vice versa.
+
+\item \textbf{Second order equations}
+
+given 
+
+\[
+a\frac{d^2y}{dx^2}+b\frac{dy}{dx}+cy=0
+\]
+
+we can analyze the characteristic equation
+
+\[
+y=e^{rx}, y'=re^{rx}, y''=r^2e^{rx}
+\]
+
+and using this fact gives us
+
+\[
+e^{rx}[ar^2+br+c]=0
+\]
+
+allowing us to solve quadratic equation to find for $r$.
+
+
+    
+\end{enumerate}
+\end{document}
+
