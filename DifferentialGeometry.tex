@@ -1,0 +1,405 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb}
+\title{Differential Geometry}
+\author{Maxwel Kim}
+\date{June 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{curvature}
+
+\textbf{Velocity vector} 
+
+\[
+T(s)=\gamma'(s)
+\]
+
+has unit length and is tangent to the curve at point
+
+\[
+p=\gamma(s)
+\]
+
+and curvature at p is
+
+\[
+T'(s)=\gamma''(s)
+\]
+
+therefore.
+
+\textbf{signed curvature or simply curvature} is 
+
+\[
+\kappa =<T',n>=<\gamma'',n>
+\]
+
+and this is how we define it.
+
+\section*{Surfaces in Space}
+
+Gauss bonnet theorem states that for a oriented surface, gaussian curvature $K$ is a function on a surface
+
+\[
+\int_M KdS=\int \frac{1}{a^2}dS=\frac{1}{a^2}4\pi a^2=4\pi
+\]
+
+where for the sphere $M$ of radius $a$ is in this case. \\
+
+We define $\chi(M)$ as euler characteristic where for previous example it would be $2$.
+
+\[
+\int _M KdS=2\pi \chi(M)
+\]
+
+\section*{Directional Derivatives}
+
+to compute directional derivatives, 
+
+\[
+x^i=p^i+ta^i
+\]
+
+we set the parametric equations for the line through $p$ in the direction $X_p$
+
+let 
+
+\[
+a=(a^1,...,a^n)
+\]
+
+then direcitonal derivative $D_{X_p}f$ is 
+
+\[
+D_{X_p}f=\lim_{t\rightarrow0} \frac{f(p+ta)-f(p)}{t}=\frac{d}{dt}|_{t=0}f(p+ta)
+\]
+\[
+=\Sigma\frac{\partial f}{\partial x^i}*\frac{dx^i}{dt}|=\Sigma\frac{\partial f}{\partial x^i}*a^i
+\]
+\[
+=(\Sigma a^i\frac{\partial}{\partial x^i}|_p)f=X_pf
+\]
+
+and therefore directional derivative at $p$ of a $C^\infty$ vector field is
+
+\[
+D_{X_p}Y=\Sigma(X_pb^i)\frac{\partial}{\partial x^i}|_p
+\]
+
+The directional Derivative satisfies this property
+\[
+1. D_XY \text{ is} \; \mathcal{F}\text{-linear in } X \;\text{ and } \mathbb{R} \text{ linear in } Y
+\]
+\[
+2. D_X(fY)=(Xf)Y+fD_XY
+\]
+
+we also define 
+
+\[
+[X,Y]=D_XY-D_YX
+\]
+
+and the quantity 
+
+\[
+T(X,Y)=D_XY-D_YX-[X,Y]
+\]
+
+as torsion. 
+
+The definition for curvature is
+
+\[
+R(X,Y)=[D_X,D_Y]-D_{[X,Y]} =D_XD_Y-D_YD_X-D_{[X,Y]} \in End_\mathbb{R}(X(M))
+\]
+
+\section*{The Shape Operator}
+
+for 
+
+\[
+X_p\in T_pM
+\]
+
+we define shape operator as
+
+\[
+L_p(X_p)=-D_{X_p}N
+\]
+
+\textbf{Lemma} let $M$ be the surface in $\mathbb{R}^3$ then 
+
+\[
+\forall X,Y\in \chi(M), <L(X),Y>=<D_XY,N>
+\]
+
+this is because
+
+\[
+0=X<Y,N>=<D_XY,N>+<Y,D_XN>=<D_XY,N>-<Y,L(X)>
+\]
+
+shape operator is self-adjoint as well, meaning
+
+\[
+<L(X),Y>=<X,L(Y)>
+\]
+
+we define second fundamental form as 
+
+\[
+\Pi(X,Y)=<L(X),Y>
+\]
+
+where first fundamental form is euclidean riemannian metric as we've defined earlier.
+
+\section*{Affine connection}
+
+affine connection is way of differentiating vector fields on manifold, where it is defined as
+
+\[
+\nabla_{X_p}f=X_pf
+\]
+
+and to do so, we define in the same way, nabla is defined as
+
+\[
+\nabla :\chi(M) \times \chi(M) \rightarrow \chi(M)
+\]
+
+then for
+
+\[
+\forall X,Y\in \chi(M), 
+\]
+
+it happens the same properties,
+
+\[
+\nabla_XY \text{ is } \mathcal{F}\text{-linear in } X
+\]
+\[
+\nabla_X(fY)=(Xf)Y+f\nabla_XY
+\]
+
+it also has same definitions of torsion and curvature, where torsion is in $\chi(M)$ while euclidean connection on $\mathbb{R}^n$ so curvature is in endomorphism or the manifold
+
+for this observation, affine connection $\nabla$ on a manifold $M$ gives linear map
+
+\[
+\chi(M)\rightarrow \text{End}_{\mathbb{R}}\chi(M)
+\]
+
+and this is map from
+
+\[
+X\rightarrow \chi(M)
+\]
+
+\section*{Theorema Egregium}
+
+\[
+i. K_p=<R_p(e_1,e_2)e_2,e_1>
+\]
+\[
+ii. \text{gaussian curvature is an isometric invariant of smooth surfaces in }\mathbb{R}^3
+\]
+
+\section*{Generalizations to Hypersurfaces}
+
+\textbf{Theorem:} let $M$ be a smooth hypersurface and $D$ the direcitonal derivative then
+
+\[
+\forall X,Y\in \chi(M), \nabla_XY=(D_XY)_{tan}
+\]
+
+where for torsion freeness, 
+
+\[
+D_XY=\nabla_XY+(D_XY)_{normal}
+\]
+
+and as we define forms of fundamental, first, second and third fundamental form is 
+
+\[
+I(X_p,Y_p)=<X_p,Y_p>
+\]
+\[
+II(X_p,Y_p)=<L(X_P),Y_P>=<X_P,L(Y_P)>
+\]
+\[
+III(X_P,Y_P)=<L^2(X_P),Y_P>=<L(X_P),L(Y_P)>=<X_P,L^2(Y_P)>
+\]
+
+\textbf{Prop} if $N$ is a smooth unit normal vector field on hypersurface $M$ in $\mathbb{R}^{n+1}$ and $X,Y\in\chi(M)$ then
+
+\[
+(D_XY)_{nor}=II(X,Y)N
+\]
+
+\section*{connections on vector bundles}
+
+connection on a map is defined as
+
+\[
+\nabla : \chi(M) \times \Gamma(E)\rightarrow\Gamma(E)
+\]
+
+such that
+
+\[
+X\in \chi(M), \; s\in\Gamma(E)
+\]
+
+then states
+
+\[
+i. \; \nabla \text{ is } \mathcal{F}\text{-linear in } X \text{ and } \mathbb{R}\text{-linear in } s
+\]
+\[
+ii. \; \nabla_X(fs)=(Xf)s+f\nabla_Xs
+\]
+
+for connection
+
+\[
+\nabla^U:\chi(U)\times \Gamma(U,E)\rightarrow\Gamma(U,E)
+\]
+
+it is defined as 
+
+\[
+\nabla_Xe_j=\sum w_j^i(X)e_i
+\]
+
+where
+
+\[
+R(X,Y)e_j=\sum \Omega_j^i(X,Y)e_i
+\]
+
+and 
+
+\[
+R(X,Y)=\nabla_X \nabla_Y-\nabla_Y\nabla_X-\nabla_{[X,Y]}
+\]
+
+and because of the definition of nabla, 
+
+\[
+R(X,Y)=(Xw_j^i(Y)-Yw_j^i(X)-w_j^i([X,Y]))e_i+(w_k^i(X)w_j^i(Y)-w_k^i(Y)w_j^k(X))e_i
+\]
+\[
+=dw_j^i(X,Y)e_i+w_k^i\wedge w_j^k(X,Y)e_i
+\]
+
+therefore we can conclude that
+
+\[
+\Omega_j^i=dw_j^i+\sum_{k}w_k^i\wedge w_j^k
+\]
+
+also called as second structural equation, we also denote that $\tau$'s differential factor is $\omega$, therefore we can also conclude
+
+first structural formula:
+
+\[
+\tau^i=d\theta^i+\sum_jw_j^i\wedge\theta^j
+\]
+
+\section*{Geodesics}
+
+It is called \textbf{covariant derivative} if this is allowed
+
+\[
+\frac{D}{dt}: \Gamma(TM|_{c(t)})\rightarrow \Gamma(TM|_{c(t)})
+\]
+
+for this map, 
+
+\[
+\frac{DV}{dt} \text{ is } \mathbb{R} \text{ linear in } V
+\]
+\[
+\frac{D(fV)}{dt}=\frac{df}{dt}V+f\frac{DV}{dt}
+\]
+\[
+\frac{DV}{dt}(t)=\nabla_{c'(t)}V
+\]
+
+\textbf{Christoffel symbol} is a function that is of the connection $\nabla$ on the coordinate open set 
+
+\[
+(U,x^1,...,x^n)
+\]
+
+and defined as 
+
+\[
+\nabla_{\partial_i}\partial_j=\sum_{k=1}^n \Gamma_ij^k \partial_k 
+\]
+
+and for affine connection $\nabla$ on a manifold is torsion free iff every coordinate chart 
+
+\[
+(U,x^1,...,x^n) 
+\]
+
+the Christoffel symbol is symmetric in i and j:
+
+\[
+\Gamma_{ij}^k=\Gamma_{ji}^k
+\]
+
+ON a manifold with a connection, $c(t)$ the parametrized curve is a geodesic iff for
+
+\[
+(U,\phi)=(U,x^1,...,x^n)
+\]
+
+the components of 
+
+\[
+\ddot{y}^k+\sum_{i,j}\Gamma_{ij}^k\dot{y}^i\dot{y}^j=0
+\]
+
+this is because
+
+\[
+T(t)=c'(t)=\sum \dot{y}^j\partial_{j,c(t)}
+\]
+\[
+\frac{DT}{dt}(t)=\sum_j\ddot{y}^j\partial_{j,c(t)}+\sum_j\dot{y}^j\nabla_{c'(t)}\partial_j
+\]
+\[
+=\sum_k(\ddot{y}^k+\sum_{i,j}\dot{y}^i\dot{y}^j\Gamma_{ij}^k)\partial_k
+\]
+
+\textbf{Gauss-bonnet theorem for surface}
+
+the euler characteristic is defined as
+
+\[
+\chi = V-E+F
+\]
+
+where we concluded
+
+\[
+\int_MKvol=2\pi \chi(M)
+\]
+
+
+
+
+
+
+
+
+
+\end{document}
