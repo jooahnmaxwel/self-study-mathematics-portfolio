@@ -1,0 +1,774 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\title{Complex analysis}
+\author{Maxwel Kim}
+\date{June 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{Complex Numbers}
+
+complex numbers can be put into two parts
+
+\[
+Re z=x, Im z=y
+\]
+
+and let's say $z_i=(x_i,y_i)$, then 
+
+\[
+(i) \; z_1=z_2 \longleftrightarrow x_1=x_2,\; y_1=y_2
+\]
+\[
+(ii)z_1+z_2=(x_1+x_2,y_1+y_2)
+\]
+\[
+(iii)z_1z_2=(x_1x_2-y_1y_2,y_1x_2+x_1y_2)
+\]
+
+we know that $z$ can be expressed in terms of $z=r(\cos\theta+i\sin\theta)$
+
+and since $r=\sqrt{x^2+y^2}$, we also know that $r=|z|$, showing $\tan\theta=y/x$. the angle $\theta$ therefore is also called $\arg z$, where $\arg z= $Arg $z + 2n\pi$
+
+this also shows that $\arg z \equiv$ Arg $z \; \mod 2\pi$
+
+now it's easy to prove de moivre's formula
+
+\[
+(\cos\theta+i\sin\theta)^n=\cos n\theta+i\sin n\theta
+\]
+
+because 
+
+\[
+z=re^{i\theta}, z^n=r^ne^{in\theta}
+\]
+
+and the exponent being multiplied by n means it comes into coefficient in front of theta inside $\sin $ or $\cos $.
+
+\textbf{Definition:} it is called neighborhood if $D(z_0,\delta)$ is defined this way
+
+\[
+D(z_0,\delta)=\{z\in \mathbb{C} : |z-z_0|<\delta\}
+\]
+
+\textbf{open set} is defined where 
+
+\[
+\forall z\in S, \exists\delta>0 \; \text{such that } D(z,\delta)\subset S
+\]
+
+\textbf{bounded} means 
+
+\[
+\forall z, \; |z_n|\leq M
+\]
+
+where converging means 
+
+\[
+\forall n\geq N \rightarrow |z_n-z|<\epsilon
+\]
+
+the fair point is that there could be some functions that bounds but doesn't converge, such as this: $z_n=i^n$.
+
+this is because if we set this as
+
+\[
+\forall n>N \rightarrow |z_n-z|<1/2
+\]
+
+then $4N+1>N$ and $4N+3>N$ is valid therefore
+
+\[
+2=|i^{-4N+1}-z-(i^{-4N+3}-z)|\leq|z_{4N+1}-z|+|z_{4N+3}-z|<1/2+1/2=1
+\]
+
+so it doesn't prove.
+
+\textbf{definition} it is said to be Cauchy sequence if 
+
+\[
+\forall m,n \geq N \rightarrow |z_m-z_n|<\epsilon
+\]
+
+And here comes significant theorem,
+
+\textbf{Theorem} Bolzano-Weierstrass
+
+if $S$ is bounded, infinite set, then $S$ owns a limit. especially, if $\{z_n\}$ is unique complex sequence, bounded, meaning $\exists M>0$,
+
+\[
+|z_n|\leq M, \forall n=1,2,3...
+\]
+
+then $\{z_n\}$ owns a converging partial sequence.
+
+\section*{Analytic Function}
+
+\textbf{limit} is defined as 
+
+\[
+\forall 0<|z-z_0|<\delta, \exists |f(z)-w_0|<\epsilon
+\]
+
+\textbf{Theorem} Suppose
+\[
+f(z) = u(x,y) + iv(x,y)
+\]
+is differentiable at $z_0 = x_0 + iy_0$. Then $u$ and $v$ have first-order partial derivatives at $(x_0, y_0)$ and satisfy the Cauchy--Riemann equations
+\[
+u_x = v_y, \qquad u_y = -v_x \tag{2.45}
+\]
+Moreover, $f'(z_0)$ can be written as
+\[
+f'(z_0) = u_x(x_0,y_0) + iv_x(x_0,y_0) \tag{2.46}
+\]
+
+\textbf{Example}
+\begin{itemize}
+    \item[(i)] $f(z) = \dfrac{1}{z}$ is analytic at every point in the finite plane except $z = 0$.
+    \item[(ii)] $f(z) = \bar{z}$ is nowhere analytic.
+    \item[(iii)] Every polynomial is an entire function.
+\end{itemize}
+
+\textbf{singular point} is when it's analytic around $z_0$ but not at $z_0$
+
+ \textbf{Definition } Let $u(x,y)$ be a real-valued function of two variables $x$ and $y$. If $u$ is continuous on the entire domain of definition together with its first and second partial derivatives, and satisfies the \textbf{Laplace equation}
+\[
+u_{xx}(x,y) + u_{yy}(x,y) = 0 \tag{2.60}
+\]
+then $u$ is called a \textbf{harmonic function}.
+
+If a complex function $f = u + iv$ is analytic at a point, then the real part $u$ and imaginary part $v$ of $f$ have continuous partial derivatives of all orders at that point (Theorem 4.4). Using this fact, we can prove Theorem 2.8.
+
+\textbf{Lemma } Let $D \subset \mathbb{R}^2$ be an open connected set, $(a,b) \in D$, and $u : D \to \mathbb{R}$. If $u$ is $C^1$ on $D$ and one of the mixed second partial derivatives of $u$ exists and is continuous at $(a,b)$, then the other mixed second partial derivative also exists at $(a,b)$ and
+\[
+\frac{\partial^2 u}{\partial y \partial x}(a,b) = \frac{\partial^2 u}{\partial x \partial y}(a,b).
+\]
+
+\textbf{Proof.} Suppose $u_{xx}$ exists on $D$ and is continuous at $(a,b)$. Choose $r > 0$ such that $B_r(a,b) \subset D$, and for $|h|, |k| < \frac{r}{\sqrt{2}}$, let
+\[
+\Delta u(h,k) = u(a+h, b+k) - u(a+h, b) - u(a, b+k) + u(a,b).
+\]
+Applying the Mean Value Theorem twice, we can choose scalars $s, t \in (0,1)$ such that
+\[
+\Delta u(h,k) = k\frac{\partial u}{\partial y}(a+h, b+tk) - k\frac{\partial u}{\partial y}(a, b+tk) = hk\frac{\partial^2 u}{\partial x \partial y}(a+sh, b+tk).
+\]
+Since the mixed partial $\frac{\partial^2 u}{\partial x \partial y}$ is continuous at $(a,b)$,
+\[
+\lim_{h \to 0} \lim_{k \to 0} \frac{\Delta u(h,k)}{\cdots}
+\]
+
+\section*{Complex Integral}
+
+from the reason that 
+
+\[
+(a+b)'=a'+b'
+\]
+
+it happens to complex terms with same reason, 
+
+\[
+w'(t)=u'(t)+iv'(t)
+\]
+
+with same happening to integral
+
+\[
+\int{[f(t)+g(t)]}=\int{f(t)}+\int{g(t)}
+\]
+
+and if it's intregable on $[a,b]$, it shows that 
+
+\[
+Re\int{w(t)}dt=\int{Rew(t)dt}. 
+\]
+
+and same for $Im$
+
+\section*{Cauchy-Goursat}
+
+For $f$ continuous on $D$ with an antiderivative on $D$, for any closed contour $C$ in $D$:
+\[
+\int_C f(z)\,dz = 0. 
+\]
+
+Let $C: z=z(t)$, $a\le t\le b$, be a positively oriented simple closed contour, $f$ analytic on and inside $C$. :
+\[
+\int_C f(z)\,dz = \int_a^b f[z(t)]z'(t)\,dt. 
+\]
+
+With $f(z)=u(x,y)+iv(x,y)$, $z(t)=x(t)+iy(t)$:
+\[
+f[z(t)]z'(t) = u(x(t),y(t))x'(t) - v(x(t),y(t))y'(t) + i\big(u(x(t),y(t))y'(t)+v(x(t),y(t))x'(t)\big).
+\]
+
+As a complex function of real $t$, by Definition 
+\[
+\int_C f(z)\,dz = \int_a^b (ux'-vy')\,dt + i\int_a^b (vx'+uy')\,dt. 
+\]
+
+In terms of real line integrals:
+\[
+\int_C f(z)\,dz = \int_C u\,dx - v\,dy + i\int_C v\,dx + u\,dy. 
+\]
+
+follows formally by substituting $u+iv$ for $f(z)$ and $dx+idy$ for $dz$, expanding. Also holds for $C$ any contour (not just simple closed) with $f[z(t)]$ piecewise continuous on $C$.
+
+\begin{theorem}
+Let $R\subset\mathbb{R}^2$ be a region in the plane whose boundary $C=\partial R$ is a piecewise smooth curve, positively (counterclockwise) oriented. If $P,Q: R\to\mathbb{R}$ are continuously differentiable on $R$, then
+\[
+\int_C P\,dx + Q\,dy = \iint_R (Q_x - P_y)\,dA. 
+\]
+\end{theorem}
+
+Since $f$ is analytic on $R$, $f$ is continuous on $R$, so $u,v$ are continuous on $R$. If $f'$ is continuous on $R$, then $u,v$ are continuously differentiable on $R$. By Green's theorem:
+\[
+\int_C f(z)\,dz = \iint_R (-v_x - u_y)\,dA + i\iint_R (u_x - v_y)\,dA. 
+\]
+
+Since $f$ is analytic, Cauchy--Riemann equations hold:
+\[
+u_x = v_y, \qquad u_y = -v_x.
+\]
+
+So the integrands vanish identically on $R$, giving:
+
+\begin{theorem}
+Let $C$ be a simple closed contour and $f$ analytic on the region $R$ enclosed by $C$, with $f'$ continuous on $R$. Then
+\[
+\int_C f(z)\,dz = 0. 
+\]
+\end{theorem}
+
+\begin{remark}
+If the integral is $0$, the orientation of $C$ is immaterial. If $C$ is clockwise,
+\[
+\int_C f(z)\,dz = -\int_{-C} f(z)\,dz,
+\]
+
+\end{remark}
+
+The hypothesis ``$f'$ continuous'' in Cauchy's theorem was removed by Goursat.
+
+\begin{theorem}
+Let $C$ be a simple closed contour, $f$ analytic on and inside $C$. Then
+\[
+\int_C f(z)\,dz = 0.
+\]
+\end{theorem}
+
+Unless stated otherwise, simple closed contours $C$ are positively (counterclockwise) oriented. Let $R$ be $C$ together with its interior. Partition $R$ by lines parallel to the $x$- and $y$-axes, equally spaced, into \emph{squares}; a square containing boundary points not in $R$ has those points removed, the remainder called a \emph{partial square}. $R$ is covered by finitely many squares and partial squares.
+
+\begin{lemma}
+Let $f$ be analytic on the closed region $R$. For any $\varepsilon>0$, $R$ can be covered by finitely many squares and partial squares $\sigma_1,\dots,\sigma_n$, each containing a fixed point $z_j\in\sigma_j$ such that for all $z\in\sigma_j$,
+\[
+\left|\frac{f(z)-f(z_j)}{z-z_j} - f'(z_j)\right| < \varepsilon \qquad (z\ne z_j). 
+\]
+\end{lemma}
+
+\begin{proof}
+\textbf{Step 1.} Suppose, for contradiction, a square or partial square $\sigma_j$ exists for which no point $z_j$ satisfies  for all other $z\in\sigma_j$.
+
+If $\sigma_j$ is a square, bisect each side to form $4$ smaller squares. If $\sigma_j$ is a partial square, subdivide similarly and discard pieces lying outside $R$. If among the resulting small squares one still has no $z_j$ satisfying  for all other points, subdivide further. Continuing this process for each subregion as needed, after finitely many repetitions $R$ can be covered by finitely many squares/partial squares satisfying Lemma 
+
+\textbf{Step 2.} Suppose instead that after subdividing one of the original subregions indefinitely, no required points $z_j$ ever exist — a contradiction is derived.
+
+Denote by $\sigma_0$ the original subregion (square or, if partial, the entire square containing it). Repeated bisection gives an infinite nested sequence
+\[
+\sigma_0,\sigma_1,\sigma_2,\dots,\sigma_{k-1},\sigma_k,\dots \tag{4.52}
+\]
+The diagonals shrink to $0$, so there is a unique common point $z_0$ in all $\sigma_k$; each contains points of $R$ other than $z_0$. Since the squares' diagonals shrink below any $\delta$, every $\delta$-neighborhood $|z-z_0|<\delta$ eventually contains some $\sigma_k$ entirely, hence contains points of $R$ other than $z_0$. Thus $z_0$ is an accumulation point of $R$.
+
+Since $f$ is analytic on $R$, $f$ is analytic at $z_0$, so $f'(z_0)$ exists. By definition of the derivative, for each $\varepsilon>0$ there is a $\delta$-neighborhood $|z-z_0|<\delta$ such that for all $z\ne z_0$ in it,
+\[
+\left|\frac{f(z)-f(z_0)}{z-z_0} - f'(z_0)\right| < \varepsilon.
+\]
+Choosing $K$ large enough that the diagonal of $\sigma_K$ is less than $\delta$ gives a contradiction, completing the proof.
+\end{proof}
+
+\bigskip
+
+For $C_j$ the boundary of $\sigma_j$ (positively oriented), define on $\sigma_j$ the error function
+\[
+\delta_j(z) = \frac{f(z)-f(z_j)}{z-z_j} - f'(z_j) \quad (z\ne z_j), \qquad \delta_j(z_j)=0,
+\]
+so $f(z) = f(z_j) + f'(z_j)(z-z_j) + (z-z_j)\delta_j(z)$, with $|\delta_j(z)| < \varepsilon$ on $\sigma_j$ by (4.51). Integrating around $C_j$ kills the linear part (it has an antiderivative), so
+\[
+\int_{C_j} f(z)\,dz = \int_{C_j} (z-z_j)\delta_j(z)\,dz.
+\]
+
+If $\sigma_j$ is a square with side $s_j$, then $|z-z_j|<\sqrt{2}s_j$ for $z$ on $C_j$, and the contour has length $4s_j$, giving
+\[
+\left|\int_{C_j}(z-z_j)\delta_j(z)\,dz\right| < \sqrt{2}s_j\,\varepsilon\cdot 4s_j = 4\sqrt{2}A_j\varepsilon, \tag{4.59}
+\]
+where $A_j=s_j^2$.
+
+If $\sigma_j$ is a partial square, with $C_j$ consisting of part of $C$ (length $L_j$) and part of the square boundary (length at most $4s_j$), then the bound becomes
+\[
+\left|\int_{C_j}(z-z_j)\delta_j(z)\,dz\right| < \sqrt{2}s_j\varepsilon(4s_j+L_j) < 4\sqrt{2}A_j\varepsilon + \sqrt{2}SL_j\varepsilon, 
+\]
+where $S$ bounds all the $s_j$.
+
+Summing over all squares and partial squares: interior shared edges cancel (traversed oppositely), leaving only the original integral over $C$ plus the sum over the partial squares' boundary segments along $C$, whose total length is $C$'s length $L$. The sum of all $A_j$ does not exceed $S^2$. C
+\[
+\left|\int_C f(z)\,dz\right| < (4\sqrt{2}S^2 + \sqrt{2}SL)\varepsilon.
+\]
+
+Since $\varepsilon$ is arbitrary, the right side can be made as small as desired, so
+\[
+\int_C f(z)\,dz = 0,
+\]
+proving the Cauchy--Goursat theorem for a region enclosed by a simple closed contour. We now extend the theorem to a wider class of domains.
+
+\begin{definition}
+A domain $D$ is \emph{simply connected} if every simple closed contour in $D$ can be continuously shrunk to a point within $D$. A connected domain that is not simply connected is called \emph{multiply connected}.
+\end{definition}
+
+\begin{example}
+The region enclosed by a simple closed contour is simply connected. An annulus bounded by two circles is not simply connected 
+\end{example}
+
+The Cauchy--Goursat theorem extends to simply connected domains:
+
+\begin{theorem}
+If $f$ is analytic throughout a simply connected domain $D$, then for every closed contour $C$ lying in $D$,
+\[
+\int_C f(z)\,dz = 0.
+\]
+\end{theorem}
+
+\begin{proof}
+If $C$ is a simple closed contour, the result follows directly from the Cauchy--Goursat theorem. If $C$ is a closed contour that intersects itself finitely many times , $C$ can be decomposed into finitely many simple closed contours; applying the Cauchy--Goursat theorem to each piece gives the corresponding result for $C$. The case where the closed contour intersects itself infinitely many times requires a more detailed treatment, omitted here.
+\end{proof}
+
+\begin{corollary}
+If $f$ is analytic throughout a simply connected domain $D$, then $f$ has an antiderivative in $D$.
+\end{corollary}
+\begin{proof}
+Follows from Theorems 
+\end{proof}
+
+\begin{theorem}
+Let $D$ be a simply connected domain with $0\notin D$. Then there exists an analytic function $F(z)$ satisfying $e^{F(z)} = z$. Here $F(z)$ is to be understood modulo $2\pi i$.
+\end{theorem}
+
+\section*{Cauchy Integral Formula and Applications}
+
+In this section we present another of Cauchy's theorems.
+
+\begin{theorem}
+Let $f$ be analytic on and inside a positively oriented simple closed contour $C$. If $z_0$ is any point inside $C$, then
+\[
+f(z_0) = \frac{1}{2\pi i}\int_C \frac{f(z)}{z-z_0}\,dz. 
+\]
+\end{theorem}
+
+\begin{proof}
+Since $f$ is continuous at $z=z_0$, for given $\varepsilon>0$ there exists $\delta>0$ such that
+\[
+|z-z_0|<\delta \implies |f(z)-f(z_0)|<\varepsilon.
+\]
+Choose $\rho<\delta$ and let $C_0$ be the positively oriented circle $|z-z_0|=\rho$, chosen small enough to lie inside $C$. Then
+\[
+|z-z_0|=\rho \implies |f(z)-f(z_0)|<\varepsilon.
+\]
+
+The function $f(z)/(z-z_0)$ is analytic in the region between the contours $C$ and $C_0$, so by Corollary 
+\[
+\int_C \frac{f(z)}{z-z_0}\,dz = \int_{C_0} \frac{f(z)}{z-z_0}\,dz.
+\]
+
+Subtracting $f(z_0)\int_{C_0} \dfrac{dz}{z-z_0}$ from both sides of this equation:
+\[
+\int_C \frac{f(z)}{z-z_0}\,dz - f(z_0)\int_{C_0}\frac{dz}{z-z_0} = \int_{C_0}\frac{f(z)-f(z_0)}{z-z_0}\,dz. 
+\]
+
+Since
+\[
+\int_{C_0}\frac{dz}{z-z_0} = 2\pi i,
+\]
+
+\[
+\int_C \frac{f(z)}{z-z_0}\,dz - 2\pi i f(z_0) = \int_{C_0}\frac{f(z)-f(z_0)}{z-z_0}\,dz.
+\]
+
+\[
+\left|\int_{C_0}\frac{f(z)-f(z_0)}{z-z_0}\,dz\right| < \frac{\varepsilon}{\rho}\cdot 2\pi\rho = 2\pi\varepsilon.
+\]
+
+\[
+\left|\int_C \frac{f(z)}{z-z_0}\,dz - 2\pi i f(z_0)\right| < 2\pi\varepsilon.
+\]
+
+ $\varepsilon$ is an arbitrary positive number
+\end{proof}
+
+\begin{example}
+Let $C$ be the positively oriented circle $|z|=2$. Evaluate
+\[
+\int_C \frac{z}{(z^2+9)(z-i)}\,dz.
+\]
+\end{example}
+
+\begin{solution}
+The integrand $z/[(z^2+9)(z-i)]$ is not analytic inside $C$, because of the point $z=i$. Hence the Cauchy--Goursat theorem cannot be applied directly. Among the zeros of the denominator, only $z_0=i$ lies inside $C$. The function excluding this point,
+\[
+f(z) = \frac{z}{z^2+9},
+\]
+is analytic inside $C$, so the hypotheses of the Cauchy integral formula are satisfied. Rewriting the given integral as
+\[
+\int_C \frac{f(z)}{z-i}\,dz,
+\]
+the Cauchy integral formula (4.64) gives the value $2\pi i f(i) = -\dfrac{\pi}{4}$.
+\end{solution}
+
+\bigskip
+
+We now obtain an integral representation for $f'(z)$. For $0<|\Delta z|<d$:
+\[
+\frac{f(z+\Delta z)-f(z)}{\Delta z} = \frac{1}{2\pi i}\int_C \left(\frac{1}{s-z-\Delta z} - \frac{1}{s-z}\right)\frac{f(s)}{\Delta z}\,dz
+= \frac{1}{2\pi i}\int_C \frac{f(s)}{(s-z-\Delta z)(s-z)}\,ds,
+\]
+where $d < \mathrm{dist}(z,C) = \inf\{|z-s| : s\in C\}$. Using the continuity of $f$ on $C$, we show that
+\[
+\lim_{\Delta z\to 0} \frac{1}{2\pi i}\int_C \frac{f(s)}{(s-z-\Delta z)(s-z)}\,ds = \frac{1}{2\pi i}\int_C \frac{f(s)}{(s-z)^2}\,ds.
+\]
+
+To this end we first compute
+\[
+\int_C \left[\frac{1}{(s-z-\Delta z)(s-z)} - \frac{1}{(s-z)^2}\right]f(s)\,ds = \Delta z \int_C \frac{f(s)}{(s-z-\Delta z)(s-z)^2}\,ds.
+\]
+
+Let $M=\max_{z\in C}|f(z)|$ and let $L$ be the length of the contour $C$. Since $|s-z|>d$ and
+\[
+|s-z-\Delta z| \ge \big||s-z|-|\Delta z|\big| > d-|\Delta z|,
+\]
+we have, as $|\Delta z|\to 0$,
+\[
+\left|\Delta z\int_C \frac{f(s)}{(s-z-\Delta z)(s-z)^2}\,ds\right| \le \frac{|\Delta z| M L}{(d-|\Delta z|)d^2} \to 0.
+\]
+
+Hence
+\[
+\lim_{\Delta z\to 0} \frac{f(z+\Delta z)-f(z)}{\Delta z} = \frac{1}{2\pi i}\int_C \frac{f(s)}{(s-z)^2}\,ds,
+\]
+and so finally
+\[
+f'(z) = \frac{1}{2\pi i}\int_C \frac{f(s)}{(s-z)^2}\,ds. 
+\]
+
+Using the same method, we obtain
+\[
+f''(z) = \frac{1}{\pi i}\int_C \frac{f(s)}{(s-z)^3}\,ds. 
+\]
+
+By induction, we obtain
+\[
+f^{(n)}(z) = \frac{n!}{2\pi i}\int_C \frac{f(s)}{(s-z)^{n+1}}\,ds, \qquad n=0,1,2,\dots, 
+\]
+where $f^{(0)}=f$.
+
+Equation asserts the existence of the second derivative of $f$ at each point $z$ inside $C$. In fact, if a function $f$ is analytic at a point, then its derivative $f'$ is also analytic at that point. This is because, if $f$ is analytic at the point $z$, there exists a circle about $z$ on and inside which $f$ is analytic. $f''(z)$ exists at each point inside that circle, and hence $f'$ is analytic at $z$. Applying the same argument to the analytic function $f'$ shows that $f''$ is also analytic. Continuing in this way, we obtain the following theorem.
+
+\begin{theorem}
+If a function $f$ is analytic at a point $z_0$, then all the derivatives $f^{(n)}$ of $f$ are also analytic at $z_0$.
+\end{theorem}
+
+However, Theorem does not hold for real functions. If
+\[
+f(z) = u(x,y) + iv(x,y)
+\]
+is analytic at the point $z=(x,y)$, then the analyticity of $f'$ guarantees the continuity of $f'$. Since
+\[
+f'(z) = u_x(x,y) + iv_x(x,y) = v_y(x,y) - iu_y(x,y),
+\]
+the first-order partial derivatives of $u,v$ are continuous at that point; that is, $u,v$ are $C^1$ functions. Moreover, $f''$ is also analytic and continuous at $z$, with
+\[
+f''(z) = u_{xx}(x,y) + iv_{xx}(x,y) = v_{yx}(x,y) - iu_{yx}(x,y),
+\]
+and so on.
+
+\begin{example}
+Let $C$ be a positively oriented closed contour and $z_0$ an interior point of $C$. Then
+\[
+\int_C \frac{1}{(z-z_0)^n}\,dz =
+\begin{cases}
+2\pi i, & n=1,\\
+0, & n\ne 1.
+\end{cases} 
+\]
+\end{example}
+
+\begin{solution}
+Setting $f(z)=1$, follows immediately from the Cauchy integral formula
+\end{solution}
+
+The proof of the next theorem relies on the fact that the derivative of an analytic function is itself analytic.
+
+\begin{theorem}[ Morera]
+If $f$ is continuous throughout a domain $D$, and
+\[
+\int_C f(z)\,dz = 0 \tag
+\]
+for every closed contour $C$ lying in $D$, then $f$ is analytic throughout $D$.
+\end{theorem}
+
+\begin{proof}
+Suppose the hypotheses of the theorem hold. Then $f$ has an antiderivative $F$. Since $F'=f$, $F$ is analytic.the derivative of an analytic function is itself analytic, so $f$ is analytic.
+\end{proof}
+
+\begin{remark}
+If $D$ is a simply connected domain, Morera's theorem, applied to the set of continuous functions on $D$, states the converse of the Cauchy--Goursat theorem.
+\end{remark}
+
+
+\\
+
+\begin{theorem}[Weierstrass]
+Suppose the sequence of functions $f_n(z)$ is analytic on a domain $\Omega_n$, and the sequence $\{f_n(z)\}$ converges to a limit function $f(z)$ on $\Omega$, uniformly on every compact subset of $\Omega$. Then $f(z)$ is analytic on $\Omega$. Moreover, $f_n'(z)$ converges uniformly to $f'(z)$ on every compact subset of $\Omega$.
+\end{theorem}
+
+\begin{proof}
+\textbf{1.} Let $|z-a|\le r$ be a closed disk contained in $\Omega$. By hypothesis, this disk is contained in $\Omega_n$ for all $n$ greater than some $n_0$. If $\gamma$ is any closed curve contained in $|z-a|<r$, then by Cauchy's theorem, for $n>n_0$,
+\[
+\int_\gamma f_n(z)\,dz = 0.
+\]
+
+Using uniform convergence on $\gamma$,
+\[
+\int_\gamma f(z)\,dz = \lim_{n\to\infty}\int_\gamma f_n(z)\,dz = 0,
+\]
+and by Morera's theorem, $f(z)$ is analytic on $|z-a|<r$. Hence $f(z)$ is analytic throughout $\Omega$.
+
+\textbf{2.} Since $f_n$ is analytic, by the Cauchy integral formula,
+\[
+f_n(z) = \frac{1}{2\pi i}\int_C \frac{f_n(\zeta)}{\zeta - z}\,d\zeta,
+\]
+where $C$ is the circle $|\zeta-a|=r$ and $|z-a|<r$. As $n\to\infty$, by uniform convergence,
+\[
+f(z) = \frac{1}{2\pi i}\int_C \frac{f(\zeta)}{\zeta - z}\,d\zeta,
+\]
+and this formula shows that $f(z)$ is analytic on the disk. From the differentiation formula
+\[
+f_n'(z) = \frac{1}{2\pi i}\int_C \frac{f_n(\zeta)}{(\zeta-z)^2}\,d\zeta,
+\]
+the same method gives
+\[
+\lim_{n\to\infty} f_n'(z) = \frac{1}{2\pi i}\int_C \frac{f(\zeta)}{(\zeta-z)^2}\,d\zeta = f'(z),
+\]
+and it is easy to show that this convergence is uniform on $|z-a|\le \rho < r$. Any compact subset of $\Omega$ can be covered by finitely many such closed disks, so the convergence is uniform on every compact subset.
+
+Continuing the proof process above, for each positive integer $k$, $f_n^{(k)}(z)$ converges uniformly to $f^{(k)}(z)$ on every compact subset of $\Omega$.
+\end{proof}
+
+\begin{theorem}[Laurent]
+Let $f$ be analytic in the annular domain $R_1<|z-z_0|<R_2$. Let $C$ be any simple closed contour about $z_0$, oriented positively, lying in this domain. Then at each point $z$ in the domain,
+\[
+f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^n+\sum_{n=1}^{\infty}\frac{b_n}{(z-z_0)^n}
+\qquad (R_1<|z-z_0|<R_2) 
+\]
+where
+\[
+a_n=\frac{1}{2\pi i}\int_C \frac{f(z)}{(z-z_0)^{n+1}}\,dz \qquad (n=0,1,2,\dots) 
+\]
+and
+\[
+b_n=\frac{1}{2\pi i}\int_C \frac{f(z)}{(z-z_0)^{-n+1}}\,dz \qquad (n=1,2,\dots) 
+\]
+\end{theorem}
+
+Equation can be written compactly as
+\[
+f(z)=\sum_{n=-\infty}^{\infty}c_n(z-z_0)^n \qquad (R_1<|z-z_0|<R_2) 
+\]
+where
+\[
+c_n=\frac{1}{2\pi i}\int_C \frac{f(z)}{(z-z_0)^{n+1}}\,dz \qquad (n=0,\pm1,\pm2,\dots) 
+\]
+
+The series expressions are called the Laurent Series
+
+\begin{theorem}[Uniqueness of Laurent series]
+If a series
+\[
+\sum_{n=-\infty}^{\infty} c_n(z-z_0)^n
+=\sum_{n=0}^{\infty} a_n(z-z_0)^n+\sum_{n=1}^{\infty}\frac{b_n}{(z-z_0)^n}
+
+\]
+converges to $f(z)$ at every point of some annular domain about $z_0$, then this is the Laurent series for $f$ at $z=z_0$.
+\end{theorem}
+
+Applying Theorem to the doubly infinite series
+\[
+f(z)=\sum_{m=-\infty}^{\infty} c_m(z-z_0)^m
+\]
+gives
+\[
+\int_C g(z)f(z)\,dz=\sum_{m=-\infty}^{\infty} c_m \int_C g(z)(z-z_0)^m\,dz 
+\]
+where $C$ is a circle in the annular domain. With
+\[
+g(z)=\frac{1}{2\pi}\cdot\frac{1}{(z-z_0)^{n+1}} \qquad (n=0,\pm1,\pm2,\dots)
+\]
+we obtain
+\[
+\int_C \frac{f(z)}{(z-z_0)^{n+1}}\,dz=\sum_{m=-\infty}^{\infty} c_m \int_C (z-z_0)^{n+m+1}\,dz 
+\]
+and, for all integers $m,n$,
+\[
+\frac{1}{2\pi i}\int_C \frac{dz}{(z-z_0)^{n-m+1}}=
+\begin{cases}
+0, & m\neq n\\
+1, & m=n
+\end{cases}
+\]
+
+From which
+\[
+\sum_{m=0}^{\infty} a_m\int_C g(z)(z-z_0)^m\,dz=c_n.
+\]
+
+therefore the equation is the Laurent series for $f$ at the point $z_0$.
+
+The following property is one possessed only by complex functions.
+
+\begin{theorem}[Residue Theorem]
+Let $C$ be a positively oriented simple closed contour. If $f$ is analytic on and inside $C$ except at finitely many singular points $z_1,\dots,z_n$ inside $C$, then
+\[
+\int_C f(z)\,dz = 2\pi i \sum_{k=1}^n \mathrm{Res}(f; z=z_k). 
+\]
+\end{theorem}
+
+\begin{proof}
+Let $z_k$ $(k=1,\dots,n)$ be centers of small positively oriented circles $C_k$, contained in the interior of $C$, chosen small enough to be pairwise disjoint . Then $f$ is analytic on the region bounded by $C, C_1,\dots,C_n$, and its interior is multiply connected. Applying the Cauchy--Goursat theorem,
+\[
+\int_C f(z)\,dz - \sum_{k=1}^n \int_{C_k} f(z)\,dz = 0.
+\]
+Since
+\[
+\int_{C_k} f(z)\,dz = 2\pi i \sum_{k=1}^n \mathrm{Res}(f; z=z_k),
+\]
+
+\end{proof}
+
+\begin{theorem}[Argument Principle]
+Let $f(z)$ be meromorphic in the interior of a positively oriented simple closed contour $C$, analytic and nonzero on $C$. If $f$ has $Z$ zeros and $P$ poles inside $C$ (counted with multiplicity/order), then
+\[
+\frac{1}{2\pi}\Delta_C \arg f(z) = Z-P.
+\]
+\end{theorem}
+
+\begin{proof}
+Let $C: z=z(t)$, $a\le t\le b$, be a parametrization. We compute $\displaystyle\int_C \frac{f'(z)}{f(z)}\,dz$ two ways.
+
+\textbf{Method 1.}
+\[
+\int_C \frac{f'(z)}{f(z)}\,dz = \int_a^b \frac{f'(z(t))z'(t)}{f(z(t))}\,dt.
+\]
+Since $\Gamma = f(C)$ does not pass through the origin, write
+\[
+\Gamma: f(z(t)) = \rho(t)e^{i\phi(t)}, \qquad a\le t\le b. 
+\]
+Then
+\[
+f'(z(t))z'(t) = \frac{d}{dt}f(z(t)) = \frac{d}{dt}\rho(t)e^{i\phi(t)} = \rho'(t)e^{i\phi(t)} + i\rho(t)e^{i\phi(t)}\phi'(t). 
+\]
+Hence
+\[
+\int_C \frac{f'(z)}{f(z)}\,dz = \int_a^b \frac{\rho'(t)}{\rho(t)}\,dt + i\int_a^b \phi'(t)\,dt = \big[\ln\rho(t)\big]_a^b + i\big[\phi(t)\big]_a^b. 
+\]
+Since $\rho(a)=\rho(b)$ and $\phi(b)-\phi(a) = \Delta_C \arg f(z)$,
+\[
+\int_C \frac{f'(z)}{f(z)}\,dz = i\,\Delta_C \arg f(z). 
+\]
+
+\textbf{Method 2.}
+The integrand $f'(z)/f(z)$ is analytic inside $C$ except at the zeros and poles of $f$.
+
+If $z_0$ is a zero of $f$ of order $m_0$, then $f(z) = (z-z_0)^{m_0}g(z)$ with $g$ analytic and $g(z_0)\ne0$. 
+Then
+\[
+f'(z) = m_0(z-z_0)^{m_0-1}g(z) + (z-z_0)^{m_0}g'(z),
+\]
+so
+\[
+\frac{f'(z)}{f(z)} = \frac{m_0}{z-z_0} + \frac{g'(z)}{g(z)}.
+\]
+Since $g'/g$ is analytic at $z_0$, it has a Taylor series there, type reasoning $z_0$ is a simple pole of $f'/f$ with
+\[
+\mathrm{Res}\left(\frac{f'(z)}{f(z)}; z=z_0\right) = m_0.
+\]
+
+If $z_1$ is a pole of $f$ of order $m_p$, then
+\[
+f(z) = (z-z_1)^{-m_p}\phi(z),
+\]
+with $\phi$ analytic and $\phi(z_1)\ne 0$.  with $m_0$ replaced by $-m_p$, so $z_1$ is a simple pole of $f'/f$ with
+\[
+\mathrm{Res}\left(\frac{f'(z)}{f(z)}; z=z_1\right) = -m_p.
+\]
+
+By the Residue Theorem,
+\[
+\int_C \frac{f'(z)}{f(z)}\,dz = 2\pi i(Z-P). 
+\]
+
+therefore 
+\[
+i\,\Delta_C \arg f(z) = 2\pi i(Z-P) \implies \frac{1}{2\pi}\Delta_C \arg f(z) = Z-P. \qedhere
+\]
+\end{proof}
+
+\subsection*{6.3 Methods for Finding Residues}
+\subsubsection*{I. Finding Residues at Poles}
+
+Suppose $f$ has a pole of order $m$ at $z_0$. Then in a punctured neighborhood $0<|z-z_0|<R_2$, $f$ has Laurent expansion
+\[
+f(z) = \sum_{n=0}^\infty a_n(z-z_0)^n + \frac{b_1}{z-z_0} + \frac{b_2}{(z-z_0)^2} + \cdots + \frac{b_m}{(z-z_0)^m}, \qquad b_m \neq 0.
+\]
+
+Define
+\[
+\phi(z) = \begin{cases} (z-z_0)^m f(z), & z \neq z_0 \\ b_m, & z = z_0 \end{cases}
+\]
+
+Then on $|z-z_0|<R_2$,
+\[
+\phi(z) = b_m + b_{m-1}(z-z_0) + \cdots + b_2(z-z_0)^{m-2} + b_1(z-z_0)^{m-1} + \sum_{n=0}^\infty a_n(z-z_0)^{n+m}.
+\]
+
+So $\phi$ is analytic on $|z-z_0|<R_2$, in particular at $z=z_0$, with $\phi(z_0)=b_m\neq 0$. Hence
+\[
+f(z) = \frac{\phi(z)}{(z-z_0)^m}, 
+\]
+with $\phi$ analytic at $z_0$ and $\phi(z_0)\neq 0$.
+
+Conversely, suppose $f(z)$ can be written in the form with $\phi$ analytic on $|z-z_0|<\varepsilon$. Then $\phi$ has a Taylor expansion
+\[
+\phi(z) = \phi(z_0) + \phi'(z_0)(z-z_0) + \frac{\phi''(z_0)}{2!}(z-z_0)^2 + \cdots + \frac{\phi^{(m-1)}(z_0)}{(m-1)!}(z-z_0)^{m-1} + \sum_{n=m}^\infty \frac{\phi^{(n)}(z_0)}{n!}(z-z_0)^n.
+\]
+
+ for $0<|z-z_0|<\varepsilon$,
+\[
+f(z) = \frac{\phi(z_0)}{(z-z_0)^m} + \frac{\phi'(z_0)}{(z-z_0)^{m-1}} + \frac{\phi''(z_0)/2!}{(z-z_0)^{m-2}} + \cdots + \frac{\phi^{(m-1)}(z_0)/(m-1)!}{z-z_0} + \sum_{n=m}^\infty \frac{\phi^{(n)}(z_0)}{n!}(z-z_0)^{n-m}. 
+\]
+
+Since $\phi(z_0)\neq 0$, $f$ has a pole of order $m$ at $z_0$.The residue of $f$ at $z_0$ is
+\[
+\mathrm{Res}(f;z=z_0) = \begin{cases} \phi(z_0), & m=1 \\\dfrac{\phi^{(m-1)}(z_0)}{(m-1)!}, & m\geq 2 \end{cases} 
+\]
+
+
+
+\end{document}
+
+
+
+
+\end{document}
