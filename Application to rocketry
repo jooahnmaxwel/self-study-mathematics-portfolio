@@ -1,0 +1,16 @@
+I have used specificaly differential geometry, differential equation and calculus + little bit of homotopy(real analysis) into applying into my equation. 
+While finding the first base equation, I've used the basic physics formula to combine all the different dimension variables: weight, wind speed and temperature. As you can assume,
+they are not likely to be converged as one equation. 
+
+
+as Height is integral of v(t), and direction of wind is another "variable" so we put angle as a constant to try match with multiple results and stats. \rightarrow vcos(theta).
+
+newton's second law gives us that m*dv/dt=T-D-mg, and since W=mg, seeing it being accumulated over he entire flight, integral of (dW/W)=ln|W|+C
+
+for temperature, air density in ideal gas law is written as \rho=P/(RT). Recall that Drag is F_D=1/2*(\rho)*(C_D)*A*v^2
+this was the hard part to apply, but I chose to use taylor series to expand to get 
+\rho(T)=\rho(T_0)+\rho'(T_0)*(T-T_0). This first order taylor expansion tells us that temperature is approximately linear.
+
+therefore with all the variables using physics formula, WLOG, equation becomes
+
+H=A+B(delta)T+Cln(W)+DVcos(theta)
