@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{remark}{Remark}
+
+\title{Theorem: invertible matrix equivalency}
+\date{}
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{7}
+\setcounter{theorem}{18}
+
+\begin{theorem}[Invertible Matrix Theorem]
+Let $A$ be an $m \times n$ matrix and $T: V \to W$ a linear transformation such that
+$[T]_{C \leftarrow B} = A$ for bases $B$ of $V$ and $C$ of $W$.
+Then the following statements are all equivalent.
+\begin{enumerate}
+    \item[(a)] $A$ is invertible.
+    \item[(b)] For every $\mathbf{b} \in \mathbb{R}^n$, $A\mathbf{x} = \mathbf{b}$ has a unique solution.
+    \item[(c)] $A\mathbf{x} = \mathbf{0}$ has only the trivial solution.
+    \item[(d)] The reduced row echelon form of $A$ is $I_n$.
+    \item[(e)] $A$ can be expressed as a product of elementary matrices.
+    \item[(f)] $\operatorname{rank}(A) = n$.
+    \item[(g)] $\operatorname{nullity}(A) = 0$.
+    \item[(h)] The column vectors of $A$ are linearly independent.
+    \item[(i)] The column vectors of $A$ span $\mathbb{R}^n$.
+    \item[(j)] The column vectors of $A$ form a basis for $\mathbb{R}^n$.
+    \item[(k)] The row vectors of $A$ are linearly independent.
+    \item[(l)] The row vectors of $A$ span $\mathbb{R}^n$.
+    \item[(m)] The row vectors of $A$ form a basis for $\mathbb{R}^n$.
+    \item[(n)] $\det(A) \neq 0$.
+    \item[(o)] $0$ is not an eigenvalue of $A$.
+    \item[(p)] $T$ is invertible.
+    \item[(q)] $T$ is one-to-one (injective).
+    \item[(r)] $T$ is onto (surjective).
+    \item[(s)] $\ker(T) = \{\mathbf{0}\}$.
+    \item[(t)] $\operatorname{range}(T) = W$.
+    \item[(u)] $0$ is not a singular value of $A$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We prove the cycle
+\[
+(\mathrm{a}) \Rightarrow (\mathrm{b}) \Rightarrow (\mathrm{c}) \Rightarrow (\mathrm{d}) \Rightarrow (\mathrm{e}) \Rightarrow (\mathrm{a}),
+\]
+then use established linear-algebra identities to collect the remaining equivalences.
+
+\medskip
+\noindent\textbf{(a) $\Rightarrow$ (b).}
+Suppose $A$ is invertible. For any $\mathbf{b} \in \mathbb{R}^n$, the vector $\mathbf{x} = A^{-1}\mathbf{b}$ is a solution of $A\mathbf{x} = \mathbf{b}$. If $\mathbf{x}'$ is another solution, then
+\[
+A\mathbf{x}' = \mathbf{b} \implies \mathbf{x}' = A^{-1}A\mathbf{x}' = A^{-1}\mathbf{b} = \mathbf{x}.
+\]
+Hence the solution is unique.
+
+\medskip
+\noindent\textbf{(b) $\Rightarrow$ (c).}
+Taking $\mathbf{b} = \mathbf{0}$, statement (b) gives a unique solution to $A\mathbf{x} = \mathbf{0}$. Since $\mathbf{x} = \mathbf{0}$ is always a solution, it must be the unique one.
+
+\medskip
+\noindent\textbf{(c) $\Rightarrow$ (d).}
+The homogeneous system $A\mathbf{x} = \mathbf{0}$ has only the trivial solution iff the system has no free variables, i.e., every column of $A$ contains a pivot. Since $A$ is $n \times n$, there are exactly $n$ pivots, one in each column and each row, so the reduced row echelon form is $I_n$.
+
+\medskip
+\noindent\textbf{(d) $\Rightarrow$ (e).}
+Row reduction to $I_n$ amounts to multiplying $A$ on the left by a sequence of elementary matrices $E_1, \ldots, E_k$:
+\[
+E_k \cdots E_1 A = I_n.
+\]
+Since elementary matrices are invertible,
+\[
+A = E_1^{-1} \cdots E_k^{-1},
+\]
+which is a product of elementary matrices (each $E_i^{-1}$ is itself elementary).
+
+\medskip
+\noindent\textbf{(e) $\Rightarrow$ (a).}
+Elementary matrices are invertible, and a product of invertible matrices is invertible, so $A$ is invertible.
+
+\medskip\noindent
+This closes the main cycle. We now establish the remaining equivalences.
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (f).}
+By the Rank--Nullity Theorem, $\operatorname{rank}(A) + \operatorname{nullity}(A) = n$.
+$A$ invertible $\Leftrightarrow$ (c) $\Leftrightarrow$ $\operatorname{nullity}(A) = 0$ $\Leftrightarrow$ $\operatorname{rank}(A) = n$.
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (g).}
+$\operatorname{nullity}(A) = 0 \Leftrightarrow A\mathbf{x}=\mathbf{0}$ has only the trivial solution $\Leftrightarrow$ (c) $\Leftrightarrow$ (a).
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (h).}
+The columns of $A$ are linearly independent iff $A\mathbf{x} = \mathbf{0}$ has only the trivial solution (c), which is equivalent to (a).
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (i).}
+$\operatorname{rank}(A) = n$ iff the column space of $A$ equals $\mathbb{R}^n$, i.e., the columns span $\mathbb{R}^n$. This is (f), equivalent to (a).
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (j).}
+The columns form a basis for $\mathbb{R}^n$ iff they are linearly independent (h) and span $\mathbb{R}^n$ (i), both equivalent to (a).
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (k).}
+$A$ is invertible iff $A^T$ is invertible iff the columns of $A^T$ are linearly independent iff the rows of $A$ are linearly independent.
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (l).}
+$A$ invertible $\Rightarrow$ $\operatorname{rank}(A^T) = n$ $\Rightarrow$ the row space of $A$ equals $\mathbb{R}^n$, i.e., the rows span $\mathbb{R}^n$. The converse is symmetric.
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (m).}
+Combining (k) and (l): rows form a basis iff they are linearly independent and span $\mathbb{R}^n$, both equivalent to (a).
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (n).}
+$A$ is invertible iff $\det(A) \neq 0$. (Standard determinant characterization of invertibility.)
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (o).}
+$0$ is an eigenvalue of $A$ iff $A\mathbf{x} = 0\cdot\mathbf{x} = \mathbf{0}$ has a nontrivial solution iff $A$ is not invertible. Contrapositively, $A$ invertible $\Leftrightarrow$ $0$ is not an eigenvalue.
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (p).}
+Since $[T]_{C\leftarrow B} = A$, the linear transformation $T$ is invertible iff its matrix representation $A$ is invertible.
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (q).}
+$T$ is injective iff $\ker(T) = \{\mathbf{0}\}$ iff $A\mathbf{x} = \mathbf{0}$ has only the trivial solution iff (c) iff (a).
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (r).}
+$T$ is surjective iff $\operatorname{range}(T) = W$ iff $\operatorname{rank}(A) = n$ iff (f) iff (a).
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (s).}
+$\ker(T) = \{\mathbf{0}\}$ iff $T$ is injective (q) iff (a).
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (t).}
+$\operatorname{range}(T) = W$ iff $T$ is surjective (r) iff (a).
+
+\medskip
+\noindent\textbf{(a) $\Leftrightarrow$ (u).}
+By definition, $0$ is a singular value of $A$ iff $0$ is an eigenvalue of $A^T A$.
+\begin{itemize}
+    \item[(a)$\Rightarrow$(u):] If $A$ is invertible, then $A^T$ is also invertible, so $A^T A$ is invertible, and thus $0$ is not an eigenvalue of $A^T A$, i.e., $0$ is not a singular value of $A$.
+    \item[(u)$\Rightarrow$(a):] If $0$ is not a singular value of $A$, then $0$ is not an eigenvalue of $A^T A$, so $A^T A$ is invertible by (o). By Theorem 3.28 (or the standard result that $A^T A$ invertible $\Rightarrow$ $A$ invertible), $A$ is invertible.
+\end{itemize}
+Hence all 21 statements are mutually equivalent.
+\end{proof}
+
+\end{document}
